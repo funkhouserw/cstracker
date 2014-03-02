@@ -1,0 +1,5 @@
+<%= form_tag(search_players_path, method: "get") do %>
+  <%= label_tag(:steam_id, "Steam ID:") %>
+  <%= text_field_tag(:steam_id) %>
+  <%= submit_tag("Find") %>
+<% end %>
