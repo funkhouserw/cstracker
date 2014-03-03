@@ -1,5 +1,9 @@
 class Stats
-  attr_reader :data, :total_kills, :total_deaths, :weapons
+  include Mongoid::Document
+  field :data, type: Hash
+  field :player_id, type: Integer
+  field :fetched_at, type: DateTime, default: ->{ DateTime.now }
+  index({ player_id: 1 }, { name: "player_id_index" })
 
   WEAPONS = [
     "knife",
@@ -37,11 +41,6 @@ class Stats
     "taser"
   ]
 
-
-  def initialize(data_hash)
-    parse(data_hash)
-  end
-
   def weapon(name)
     {
       :shots => data["total_shots_" + name],
@@ -54,10 +53,11 @@ class Stats
     total_kills.to_f / total_deaths.to_f
   end
 
-  private
-  def parse(data_hash)
-    @data = data_hash.each_with_object({}) { |stat, hsh| hsh[stat["name"]] = stat["value"] }
-    @total_kills = data["total_kills"]
-    @total_deaths = data["total_deaths"]
+  def total_kills
+    data["total_kills"]
+  end
+
+  def total_deaths
+    data["total_deaths"]
   end
 end
