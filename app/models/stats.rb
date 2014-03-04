@@ -50,14 +50,14 @@ class Stats
   end
 
   def kd
-    total_kills.to_f / total_deaths.to_f
+    if (total_deaths == 0)
+      1
+    else
+      total_kills.to_f / total_deaths.to_f
+    end
   end
 
-  def total_kills
-    data["total_kills"]
-  end
-
-  def total_deaths
-    data["total_deaths"]
+  def method_missing(sym, *args, &block)
+    data[sym.to_s] || super(sym, *args, &block)
   end
 end
