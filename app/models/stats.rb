@@ -60,4 +60,8 @@ class Stats
   def method_missing(sym, *args, &block)
     data[sym.to_s] || super(sym, *args, &block)
   end
+
+  def respond_to?(sym, include_private = false)
+    data.try(:[], sym.to_s) != nil || super(sym, include_private)
+  end
 end
