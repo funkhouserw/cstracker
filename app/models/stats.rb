@@ -42,11 +42,11 @@ class Stats
   ]
 
   def weapon(name)
-    {
-      :shots => data["total_shots_" + name],
-      :hits => data["total_hits_" + name],
-      :kills => data["total_kills_" + name]
-    }
+    raise "#{name} is not a weapon." if !WEAPONS.include?(name)
+    WeaponStat.new(name,
+      data["total_shots_" + name],
+      data["total_hits_" + name],
+      data["total_kills_" + name])
   end
 
   def kd
@@ -63,5 +63,17 @@ class Stats
 
   def respond_to?(sym, include_private = false)
     data.try(:[], sym.to_s) != nil || super(sym, include_private)
+  end
+
+  WeaponStat = Struct.new(:name, :shots, :hits, :kills) do
+    def accuracy
+      return 0 if shots == 0
+      hits / shots.to_f
+    end
+
+    def shots_per_kill
+      return 0 if kills == 0
+      shots / kills.to_f
+    end
   end
 end
