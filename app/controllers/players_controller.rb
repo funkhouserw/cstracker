@@ -6,5 +6,6 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_or_create_by(steam_id: params.require(:id))
+    flash[:error] = "Could not find a player by that id." unless @player
   end
 end

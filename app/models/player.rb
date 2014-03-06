@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   TIME_UNTIL_FETCH = 1.hour
+  before_validation :validate_steam_id, :on => :create
 
   def latest_stats
     @latest_stats ||= begin
@@ -17,5 +18,10 @@ class Player < ActiveRecord::Base
     params[:fected_at.lte] = end_time if end_time
 
     Stats.where(params.merge(:player_id => id))
+  end
+
+  private
+  def validate_steam_id
+    # TODO: Validate with steam
   end
 end
