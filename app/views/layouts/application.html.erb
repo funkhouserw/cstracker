@@ -3,9 +3,19 @@
 <head>
   <title>SteamStatTracker</title>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
 </head>
 <body>
-
+  <div id="header_container">
+    <div class="title">CS:GO Stat Tracker</div>
+    <div class="login_container">
+      <%= form_tag(search_players_path, method: "get") do %>
+        <%= text_field_tag(:steam_id) %>
+        <%= submit_tag("Go") %>
+      <% end %>
+    </div>
+  </div>
 <%= yield %>
 
 </body>

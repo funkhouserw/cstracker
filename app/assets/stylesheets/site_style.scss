@@ -1,0 +1,24 @@
+body {
+  font-family: 'Alef', sans-serif;
+  background-color: #222222;
+  color: white;
+  position: relative;
+  width: 1000px;
+  min-height: 100%;
+  margin: 0px auto;
+}
+
+#header_container {
+  height: 60px;
+  background-color: #2E3640;
+  width: 100%;
+  vertical-align: middle;
+  line-height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .title {
+    font-size: 30px;
+    float: left;
+  }
+}
