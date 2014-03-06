@@ -2,7 +2,7 @@ class PlayerPerformance
   attr_reader :stats
 
   def initialize(_stats)
-    @stats = _stats.order_by { |x| x.fetched_at }
+    @stats = _stats.sort_by { |x| x.fetched_at }
   end
 
   def stat_by_day(_stat)
