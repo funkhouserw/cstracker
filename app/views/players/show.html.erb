@@ -1,1 +1,9 @@
-K/D: <%= @player.latest_stats.kd %>
+K/D: <%= @player.latest_stats.kd %><br />
+Kills: <%= @player.latest_stats.total_kills %><br />
+Deaths: <%= @player.latest_stats.total_deaths %><br />
+Headshot Percentage: <%= @player.latest_stats.headshot_percentage %><br /><br />
+
+<% Stats::WEAPONS.each do |weapon_id| %>
+<%= weapon_id %> Accuracy : <%= @player.latest_stats.weapon(weapon_id).accuracy %><br />
+<% end %>
+

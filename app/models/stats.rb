@@ -44,9 +44,9 @@ class Stats
   def weapon(name)
     raise "#{name} is not a weapon." if !WEAPONS.include?(name)
     WeaponStat.new(name,
-      data["total_shots_" + name],
-      data["total_hits_" + name],
-      data["total_kills_" + name])
+      data["total_shots_" + name] || 0,
+      data["total_hits_" + name] || 0,
+      data["total_kills_" + name] || 0)
   end
 
   def kd
@@ -55,6 +55,10 @@ class Stats
     else
       total_kills.to_f / total_deaths.to_f
     end
+  end
+
+  def headshot_percentage
+    total_kills == 0 ? 0 : total_kills_headshot.to_f / total_kills.to_f
   end
 
   def method_missing(sym, *args, &block)
@@ -72,7 +76,7 @@ class Stats
     end
 
     def shots_per_kill
-      return 0 if kills == 0
+      return 0 if kills == 0 || shots == 0
       shots / kills.to_f
     end
   end
