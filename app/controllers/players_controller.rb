@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(id: params.require(:id))
+    @player = Player.find(params.require(:id))
 
     rescue
     flash[:error] = "Could not find a player by that id."
