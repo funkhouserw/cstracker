@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
   TIME_UNTIL_FETCH = 1.hour
   before_validation :validate_steam_id, :on => :create
+  attr_accessor :community_steam_id
 
   def latest_stats
     @latest_stats ||= begin
@@ -18,6 +19,23 @@ class Player < ActiveRecord::Base
     params[:fected_at.lte] = end_time if end_time
 
     Stats.where(params.merge(:player_id => id))
+  end
+
+  def community_profile
+    @community_profile = SteamId.new(steam_id)
+  end
+
+
+  def self.init_from_url(url)
+    # Probably a waaayy better way to do this, but it'll do for now
+    steam_id = /\/profiles\/(.*?)\//.match(url + "/").try(:[], 1)
+    steam_id = steam_id.to_i if steam_id
+    steam_id ||= /\/id\/(.*?)\//.match(url + "/").try(:[], 1)
+    raise "Could not find steam id" if steam_id.nil?
+    community_steam_id = SteamId.new(steam_id)
+    player = Player.find_or_create_by(steam_id: community_steam_id.steam_id64)
+    player.community_steam_id = community_steam_id
+    return player
   end
 
   private

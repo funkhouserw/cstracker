@@ -1,7 +1,7 @@
 SteamStatTracker::Application.routes.draw do
   resources :players, :only => [:show] do
     collection do
-      get 'search'
+      post 'search'
     end
   end
 
