@@ -7,18 +7,25 @@
   <%= stylesheet_link_tag "application" %>
 </head>
 <body>
-  <div id="header_container">
-    <div class="title">CS:GO Stat Tracker</div>
-    <div class="login_container">
-      <%= form_tag(search_players_path, method: "post") do %>
-        <%= text_field_tag(:profile_url) %>
-        <%= submit_tag("Go") %>
+  <div id="content_container">
+    <div id="header_container">
+      <div class="title">CS:GO Stat Tracker</div>
+      <div class="login_container">
+        <%= form_tag(search_players_path, method: "post") do %>
+          <%= text_field_tag(:profile_url) %>
+          <%= submit_tag("Go") %>
+        <% end %>
+      </div>
+    </div>
+    <div id="main_content_container">
+      <% if flash[:error] %>
+      <div class="notice"><%= flash[:error] %></div>
       <% end %>
+      <%= yield %>
+    </div>
+    <div id="footer_container">
+      <a href="http://steampowered.com">Powered by Steam</a>
     </div>
   </div>
-  <% if flash[:error] %>
-    <div class="notice"><%= flash[:error] %></div>
-  <% end %>
-  <%= yield %>
 </body>
 </html>
