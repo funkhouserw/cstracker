@@ -3,6 +3,8 @@ SteamStatTracker::Application.routes.draw do
     collection do
       post 'search'
     end
+
+    resources :stats, :only => [:index]
   end
 
   root to: "welcome#index"

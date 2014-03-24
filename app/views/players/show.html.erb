@@ -6,3 +6,16 @@ Headshot Percentage: <%= @player.latest_stats.headshot_percentage %><br /><br />
 <% Stats::WEAPONS.each do |weapon_id| %>
 <%= weapon_id %> Accuracy : <%= @player.latest_stats.weapon(weapon_id).accuracy %><br />
 <% end %>
+
+<div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+
+<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "amcharts/amcharts.js" %>
+<%= javascript_include_tag "amcharts/serial.js" %>
+<%= javascript_include_tag "amcharts/themes/light.js" %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    weaponChart.initialize(<%= @player.id %>);
+  });
+</script>

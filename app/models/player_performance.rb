@@ -17,6 +17,6 @@ class PlayerPerformance
         results[date] += total
       end
     end
-    results
+    results.each_with_object([]) { |(k, v), array| array << {"d" => k, "v" => v } }
   end
 end

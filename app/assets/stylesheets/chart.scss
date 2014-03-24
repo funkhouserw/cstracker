@@ -1,0 +1,23 @@
+#weapon_chart {
+  width: 800px;
+  height: 300px;
+  &.loaded {
+    background-color: #FFFFFF;
+  }
+}
+
+.failure {
+  color: red;
+}
+
+.loader {
+  &.medium {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+  }
+}

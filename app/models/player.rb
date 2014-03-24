@@ -16,7 +16,7 @@ class Player < ActiveRecord::Base
   def stats(start_time=nil, end_time=nil)
     params = {}
     params[:fetched_at.gte] = start_time if start_time
-    params[:fected_at.lte] = end_time if end_time
+    params[:fetched_at.lte] = end_time if end_time
 
     Stats.where(params.merge(:player_id => id))
   end
