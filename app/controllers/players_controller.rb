@@ -1,8 +1,8 @@
 class PlayersController < ApplicationController
   def search
-    #TODO: Determine if search is id or steam profile url.  If url, get steam id from profile url
-    @player = Player.init_from_url(params.require(:profile_url))
-    render "show"
+    id = ApplicationHelper.steam_id64_from_url(params.require(:profile_url))
+    id ||= Player.init_from_url(params.require(:profile_url)).steam_id
+    redirect_to :action => :show, :id => id
 
     rescue
     flash[:error] = "Could not find a player by that id."
@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(params.require(:id))
+    @player = Player.find_by_steam_id(params.require(:id))
 
     rescue
     flash[:error] = "Could not find a player by that id."
