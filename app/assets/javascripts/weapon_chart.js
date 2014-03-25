@@ -7,7 +7,7 @@ var weaponChart = {
     this.player_id = p_id;
     that = this;
 
-    $.get( "/players/" + this.player_id + "/stats", function(data) {
+    $.get( "/players/" + this.player_id + "/stats/weapons", function(data) {
       that.chart_data = data;
       that.drawChart(data);
     })
@@ -17,6 +17,20 @@ var weaponChart = {
   },
 
   drawChart: function(data) {
+    var graphs = [];
+    $.each($('#weapons').data('ids'), function( index, value ) {
+      graphs.push({
+        "id":value,
+        "balloonText": value + "<br />[[d]]<br /><b><span style='font-size:14px;'>value: [[value]]</span></b>",
+        "bullet": "round",
+        "bulletBorderAlpha": 1,
+		    "bulletColor":"#FFFFFF",
+        "hideBulletsCount": 50,
+        "valueField": value,
+		    "useLineColorForBulletBorder":true
+      });
+    });
+
     this.amchart = AmCharts.makeChart("weapon_chart", {
       "type": "serial",
       "theme": "light",
@@ -28,16 +42,7 @@ var weaponChart = {
           "position": "left",
           "title": "Weapon Kills"
       }],
-      "graphs": [{
-          "id":"g1",
-          "balloonText": "[[d]]<br /><b><span style='font-size:14px;'>value: [[v]]</span></b>",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-		      "bulletColor":"#FFFFFF",
-          "hideBulletsCount": 50,
-          "valueField": "v",
-		  "useLineColorForBulletBorder":true
-      }],
+      "graphs": graphs,
       "chartCursor": {
           "cursorPosition": "mouse"
       },

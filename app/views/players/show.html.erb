@@ -1,3 +1,6 @@
+<%= content_tag "div", id: "weapons", class: "hidden", data: {ids: Stats::WEAPONS } do %>
+<% end %>
+
 K/D: <%= @player.latest_stats.kd %><br />
 Kills: <%= @player.latest_stats.total_kills %><br />
 Deaths: <%= @player.latest_stats.total_deaths %><br />

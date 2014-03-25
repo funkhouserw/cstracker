@@ -4,7 +4,11 @@ SteamStatTracker::Application.routes.draw do
       post 'search'
     end
 
-    resources :stats, :only => [:index]
+    resources :stats, :only => [:index] do
+      collection do
+        get 'weapons'
+      end
+    end
   end
 
   root to: "welcome#index"
