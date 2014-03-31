@@ -50,11 +50,15 @@ class Stats
   end
 
   def kd
-    if (total_deaths == 0)
-      1
-    else
-      total_kills.to_f / total_deaths.to_f
-    end
+    total_deaths == 0 ? 1 : total_kills.to_f / total_deaths.to_f
+  end
+
+  def accuracy
+    total_shots_fired == 0 ? 1 : total_shots_hit.to_f / total_shots_fired.to_f
+  end
+
+  def win_percentage
+    total_rounds_played == 0 ? 1 : total_wins.to_f / total_rounds_played.to_f
   end
 
   def headshot_percentage

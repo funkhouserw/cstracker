@@ -1,0 +1,54 @@
+.profile_image {
+  float: left;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.basic_stats {
+  float: left;
+  padding-left: 15px;
+}
+
+.basic_stats_container {
+  margin-left: -10px;
+  padding-top: 15px;
+}
+
+.header_large {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.small_subheader {
+  font-size: 15px;
+  margin-top: -5px;
+}
+
+.online {
+  color: #86b5d9;
+}
+
+.stats_table {
+  
+}
+
+.stat_header {
+  font-color: gray;
+  width: 100px;
+  text-align: right;
+  vertical-align: bottom;
+}
+
+.stat_data {
+  padding-right: 20px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 10px;
+}
+
+.clear {
+  clear: both;
+}

@@ -33,7 +33,7 @@ var weaponChart = {
 
     this.amchart = AmCharts.makeChart("weapon_chart", {
       "type": "serial",
-      "theme": "light",
+      "theme": "dark",
       "pathToImages": "/javascripts/amcharts/images/",
       "dataProvider": data,
       "valueAxes": [{

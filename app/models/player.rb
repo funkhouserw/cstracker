@@ -22,7 +22,7 @@ class Player < ActiveRecord::Base
   end
 
   def community_profile
-    @community_profile = SteamId.new(steam_id)
+    @community_steam_id ||= SteamId.new(steam_id.to_i)
   end
 
 
