@@ -15,10 +15,10 @@
         <tr>
           <td class="stat_header">K/D</td>
           <td class="stat_data"><%= '%.2f' % @player.latest_stats.kd %></td>
-          <td class="stat_header">Kills</td>
-          <td class="stat_data"><%= @player.latest_stats.total_kills %></td>
-          <td class="stat_header">Deaths</td>
-          <td class="stat_data"><%= @player.latest_stats.total_deaths %></td>
+          <td class="stat_header">MVP</td>
+          <td class="stat_data"><%= @player.latest_stats.total_mvps %></td>
+          <td class="stat_header">DPS</td>
+          <td class="stat_data"><%= '%.2f' % @player.latest_stats.damage_per_shot %></td>
         </tr>
         <tr>
           <td class="stat_header">Accuracy</td>

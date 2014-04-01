@@ -57,6 +57,10 @@ class Stats
     total_shots_fired == 0 ? 1 : total_shots_hit.to_f / total_shots_fired.to_f
   end
 
+  def damage_per_shot
+    total_damage_done == 0 ? 1 : total_damage_done.to_f / total_shots_hit.to_f
+  end
+
   def win_percentage
     total_rounds_played == 0 ? 1 : total_wins.to_f / total_rounds_played.to_f
   end
