@@ -7,4 +7,14 @@ module ApplicationHelper
       nil
     end
   end
+
+  def online_status_class(player)
+    if player.community_profile.in_game?
+      "in_game"
+    elsif player.community_profile.online?
+      "online"
+    else
+      "offline"
+    end
+  end
 end

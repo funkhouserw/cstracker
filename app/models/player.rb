@@ -31,6 +31,10 @@ class Player < ActiveRecord::Base
     steam_id = /\/profiles\/(.*?)\//.match(url + "/").try(:[], 1)
     steam_id = steam_id.to_i if steam_id
     steam_id ||= /\/id\/(.*?)\//.match(url + "/").try(:[], 1)
+    init_from_steam_id(steam_id)
+  end
+
+  def self.init_from_steam_id(steam_id)
     raise "Could not find steam id" if steam_id.nil?
     community_steam_id = SteamId.new(steam_id)
     player = Player.find_or_create_by(steam_id: community_steam_id.steam_id64)
