@@ -1,6 +1,7 @@
 #weapon_chart {
-  width: 800px;
+  width: 700px;
   height: 300px;
+  float: left;
   &.loaded {
     background: #3f3f4f;
     color:#ffffff;

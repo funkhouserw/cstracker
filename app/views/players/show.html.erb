@@ -1,4 +1,4 @@
-<%= content_tag "div", id: "weapons", class: "hidden", data: {ids: Stats::WEAPONS } do %>
+<%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: Rails.configuration.weapons, ids: Stats.weapons.keys } do %>
 <% end %>
 
 <div class="basic_stats_container">
@@ -33,10 +33,22 @@
   </div>
 </div>
 <br class="clear" />
-
-
-<div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
-
+<br />
+<div class="chart_container">
+  <div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+  <div id="weapons_toggler" class="weapon_names">
+    <% weapons_by_group.each do |group, weapons| %>
+      <div class="group">
+        <div id="weapon_group_<%= group %>" class="medium_subheader clear"><%= Rails.configuration.weapons["groups"][group]["name"] %></div>
+        <% weapons.each do |weapon_id| %>
+          <span id="weapon_toggle_<%= weapon_id %>" class="small_name"><%= Rails.configuration.weapons["weapons"][weapon_id]["name"] %></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br class="clear" />
+<br class="clear" />
 <%= javascript_include_tag "application" %>
 <%= javascript_include_tag "amcharts/amcharts.js" %>
 <%= javascript_include_tag "amcharts/serial.js" %>

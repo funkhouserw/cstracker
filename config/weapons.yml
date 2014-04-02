@@ -1,0 +1,108 @@
+weapons:
+  ak47:
+    name: "AK-47"
+    group: rifle
+  aug:
+    name: "AUG"
+    group: rifle
+  awp:
+    name: "AWP"
+    group: rifle
+  famas:
+    name: "FAMAS"
+    group: rifle
+  g3sg1:
+    name: "G3SG1"
+    group: rifle
+  m249:
+    name: "M249"
+    group: rifle
+  sg556:
+    name: "SG553"
+    group: rifle
+  scar20:
+    name: "SCAR-20"
+    group: rifle
+  ssg08:
+    name: "SCOUT"
+    group: rifle
+  negev:
+    name: "NEGEV"
+    group: rifle
+  m4a1:
+    name: "M4A1"
+    group: rifle
+  galilar:
+    name: "GALIL"
+    group: rifle
+  mac10:
+    name: "MAC-10"
+    group: smg
+  ump45:
+    name: "UMP-45"
+    group: smg
+  p90:
+    name: "P90"
+    group: smg
+  mp7:
+    name: "MP7"
+    group: smg
+  mp9:
+    name: "MP9"
+    group: smg
+  bizon:
+    name: "BIZON"
+    group: smg
+  xm1014:
+    name: "XM1014"
+    group: heavy
+  nova:
+    name: "NOVA"
+    group: heavy
+  sawedoff:
+    name: "SAWED-OFF"
+    group: heavy
+  mag7:
+    name: "MAG-7"
+    group: heavy
+  glock:
+    name: "GLOCK"
+    group: pistol
+  deagle:
+    name: "DESERT EAGLE"
+    group: pistol
+  elite:
+    name: "DUAL BERETTAS"
+    group: pistol
+  fiveseven:
+    name: "FIVE-SEVEN"
+    group: pistol
+  hkp2000:
+    name: "P2000"
+    group: pistol
+  p250:
+    name: "P250"
+    group: pistol
+  tec9:
+    name: "TEC-9"
+    group: pistol
+  molotov:
+    name: "MOLOTOV"
+    group: other
+  taser:
+    name: "ZEUS-X27"
+    group: other
+  knife:
+    name: "KNIFE"
+    group: other
+groups:
+  rifle:
+    name: "RIFLES"
+  smg:
+    name: "SMGS"
+  heavy:
+    name: "SHOTGUNS"
+  pistol:
+    name: "PISTOLS"
+  other:
+    name: "EQUIPMENT"

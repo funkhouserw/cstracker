@@ -27,6 +27,15 @@
   margin-top: -5px;
 }
 
+.medium_subheader {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+.group {
+  margin-bottom: 5px;
+}
+
 .online {
   color: #86b5d9;
 }
@@ -41,6 +50,17 @@
 
 .stats_table {
   
+}
+
+.weapon_names {
+  float: left;
+  width: 270px;
+  margin-left: 10px;
+}
+
+.small_name {
+  font-size: 13px;
+  margin-right: 5px;
 }
 
 .stat_header {

@@ -17,4 +17,15 @@ module ApplicationHelper
       "offline"
     end
   end
+
+  def weapons_by_group
+    @weapon_groups ||= begin
+      result = {}
+      Stats.weapons.each do |id, values|
+        result[values["group"]] ||= []
+        result[values["group"]] << id
+      end
+      result
+    end
+  end
 end

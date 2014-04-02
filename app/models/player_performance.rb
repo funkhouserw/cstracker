@@ -7,7 +7,7 @@ class PlayerPerformance
 
   def all_weapon_kills
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
-    Stats::WEAPONS.each do |weapon_id|
+    Stats.weapons.keys.each do |weapon_id|
       stat_by_day("total_kills_#{weapon_id}").each do |day, value|
         hsh[day][weapon_id] = value
       end

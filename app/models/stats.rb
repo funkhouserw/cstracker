@@ -5,44 +5,8 @@ class Stats
   field :fetched_at, type: DateTime, default: ->{ DateTime.now }
   index({ player_id: 1 }, { name: "player_id_index" })
 
-  WEAPONS = [
-    "knife",
-    "hegrenade",
-    "glock",
-    "deagle",
-    "elite",
-    "fiveseven",
-    "xm1014",
-    "mac10",
-    "ump45",
-    "p90",
-    "awp",
-    "ak47",
-    "aug",
-    "famas",
-    "g3sg1",
-    "m249",
-    "hkp2000",
-    "p250",
-    "sg556",
-    "scar20",
-    "ssg08",
-    "mp7",
-    "mp9",
-    "nova",
-    "negev",
-    "sawedoff",
-    "bizon",
-    "tec9",
-    "mag7",
-    "m4a1",
-    "galilar",
-    "molotov",
-    "taser"
-  ]
-
   def weapon(name)
-    raise "#{name} is not a weapon." if !WEAPONS.include?(name)
+    raise "#{name} is not a weapon." if !weapons.include?(name)
     WeaponStat.new(name,
       data["total_shots_" + name] || 0,
       data["total_hits_" + name] || 0,
@@ -87,5 +51,9 @@ class Stats
       return 0 if kills == 0 || shots == 0
       shots / kills.to_f
     end
+  end
+
+  def self.weapons
+    Rails.configuration.weapons["weapons"]
   end
 end
