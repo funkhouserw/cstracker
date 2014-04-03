@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Alef|Roboto:100);
+@import url(http://fonts.googleapis.com/css?family=Alef|Roboto:100|Open+Sans);
 $background-color: #222222;
 $content-padding-amount: 10px;
 
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Alef', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color: $background-color;
   color: white;
   margin: 0px;

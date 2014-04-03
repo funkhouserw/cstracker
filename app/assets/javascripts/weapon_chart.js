@@ -3,17 +3,10 @@ var weaponChart = {
   amchart: null,
   chart_data: null,
 
-  initialize: function (p_id) {
+  initialize: function (p_id, w_data) {
     this.player_id = p_id;
-    that = this;
-
-    $.get( "/players/" + this.player_id + "/stats/weapons", function(data) {
-      that.chart_data = data;
-      that.drawChart(data);
-    })
-    .fail(function() {
-      $("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");
-    });
+    this.chart_data = w_data;
+    this.drawChart(this.chart_data);
   },
 
   drawChart: function(data) {

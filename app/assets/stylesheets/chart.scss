@@ -8,6 +8,17 @@
   }
 }
 
+#win_loss_chart {
+  width: 700px;
+  height: 200px;
+  float: left;
+  &.loaded {
+    background: #3f3f4f;
+    color:#ffffff;
+  }
+}
+
+
 .failure {
   color: red;
 }

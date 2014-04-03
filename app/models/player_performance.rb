@@ -5,6 +5,13 @@ class PlayerPerformance
     @stats = _stats.sort_by { |x| x.fetched_at }
   end
 
+  def all_stats
+    hsh = Hash.new {|hsh, key| hsh[key] = {} }
+    hsh["weapons"] = all_weapon_kills
+    hsh["general"]["wins_losses"] = win_losses
+    hsh
+  end
+
   def all_weapon_kills
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     Stats.weapons.keys.each do |weapon_id|
@@ -13,6 +20,13 @@ class PlayerPerformance
       end
     end
      hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
+  end
+
+  def win_losses
+    hsh = Hash.new {|hsh, key| hsh[key] = {} }
+    stat_by_day("total_wins").each { |day, value| hsh[day]["wins"] = value }
+    stat_by_day("total_rounds_played").each { |day, value| hsh[day]["losses"] = value - (hsh[day]["wins"] || 0) }
+    hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
   end
 
   def stat_by_day(_stat)

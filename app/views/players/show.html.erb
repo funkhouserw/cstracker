@@ -33,7 +33,11 @@
   </div>
 </div>
 <br class="clear" />
+<div class="header_medium">Weekly Performance</div>
 <br />
+<div class="chart_container">
+  <div id="win_loss_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+</div>
 <div class="chart_container">
   <div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
   <div id="weapons_toggler" class="weapon_names">
@@ -56,6 +60,6 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
-    weaponChart.initialize(<%= @player.id %>);
+    chartController.initialize(<%= @player.id %>);
   });
 </script>
