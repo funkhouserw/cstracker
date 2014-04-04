@@ -7,20 +7,58 @@ var weaponChart = {
     this.player_id = p_id;
     this.chart_data = w_data;
     this.drawChart(this.chart_data);
+    var that = this;
+
+    $.each( $('#weapons').data('weapons')["groups"], function( group_id, group_data ) {
+      $('#weapon_group_' + group_id).click(function() {
+        that.showGroup(group_id);
+      });
+    });
+  },
+
+  hideGraph: function (graph_id) {
+    this.amchart.hideGraph(this.amchart.getGraphById(graph_id));
+  },
+
+  showGraph: function(graph_id) {
+    this.amchart.showGraph(this.amchart.getGraphById(graph_id));
+  },
+
+  showGroup: function(group_id) {
+    var weaponData = $('#weapons').data('weapons')["weapons"];
+    var that = this;
+
+    $.each(this.amchart.graphs, function(index, graph) {
+      if(weaponData[graph.id]["group"] == group_id) {
+        that.amchart.showGraph(graph);
+      } else {
+        that.amchart.hideGraph(graph);
+      }
+    });
+  },
+
+  hideGroup: function(group_id) {
+    var that = this;
+    $.each( $('#weapons').data('weapons')["weapons"], function( weapon_id, weapon_data ) {
+      if(weapon_data["group"] == group_id) {
+        that.hideGraph(weapon_id);
+      }
+    });
   },
 
   drawChart: function(data) {
     var graphs = [];
-    $.each($('#weapons').data('ids'), function( index, value ) {
+    $.each($('#weapons').data('weapons')["weapons"], function( weapon_id, weapon_data ) {
       graphs.push({
-        "id":value,
-        "balloonText": value + "<br />[[d]]<br /><b><span style='font-size:14px;'>value: [[value]]</span></b>",
+        "id":weapon_id,
+        "balloonText": weapon_data["name"] + "<br />[[d]]<br /><b><span style='font-size:14px;'>value: [[value]]</span></b>",
         "bullet": "round",
         "bulletBorderAlpha": 1,
 		    "bulletColor":"#FFFFFF",
         "hideBulletsCount": 50,
-        "valueField": value,
-		    "useLineColorForBulletBorder":true
+        "valueField": weapon_id,
+		    "useLineColorForBulletBorder":true,
+		    "hidden": weapon_data["group"] != "rifle"
       });
     });
 
