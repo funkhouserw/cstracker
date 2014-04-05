@@ -14,6 +14,8 @@ var weaponChart = {
         that.showGroup(group_id);
       });
     });
+
+    $('#weapon_group_rifle').removeClass("disabled");
   },
 
   hideGraph: function (graph_id) {
@@ -30,10 +32,17 @@ var weaponChart = {
 
     $.each(this.amchart.graphs, function(index, graph) {
       if(weaponData[graph.id]["group"] == group_id) {
-        that.amchart.showGraph(graph);
+        if(graph.hidden == true) that.amchart.showGraph(graph);
       } else {
-        that.amchart.hideGraph(graph);
+        if(graph.hidden == false) that.amchart.hideGraph(graph);
       }
+    });
+
+    $.each($('#weapons').data('weapons')["groups"], function(id, group_data) {
+      if(id == group_id)
+        $('#weapon_group_' + id).removeClass("disabled");
+      else
+        $('#weapon_group_' + id).addClass("disabled");
     });
   },
 

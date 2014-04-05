@@ -43,10 +43,11 @@
   <div id="weapons_toggler" class="weapon_names">
     <% weapons_by_group.each do |group, weapons| %>
       <div class="group">
-        <div id="weapon_group_<%= group %>" class="medium_subheader clear clickable"><%= Rails.configuration.weapons["groups"][group]["name"] %></div>
+        <div id="weapon_group_<%= group %>" class="clear clickable disabled"><span class="medium_subheader"><%= Rails.configuration.weapons["groups"][group]["name"] %></span><br />
         <% weapons.each do |weapon_id| %>
           <span id="weapon_toggle_<%= weapon_id %>" class="small_name"><%= Rails.configuration.weapons["weapons"][weapon_id]["name"] %></span>
         <% end %>
+        </div>
       </div>
     <% end %>
   </div>
