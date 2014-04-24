@@ -1,8 +1,12 @@
 var chartController = {
   player_id: null,
   chart_data: null,
+  initialized: false,
 
   initialize: function (p_id) {
+    if(this.initialized == true) return;
+    this.initialized = true;
+
     this.player_id = p_id;
     that = this;
 

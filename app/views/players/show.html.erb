@@ -33,27 +33,43 @@
   </div>
 </div>
 <br class="clear" />
-<div class="header_medium">Weekly Performance</div>
-<br />
-<div class="chart_container">
-  <div id="win_loss_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
-</div>
-<div class="chart_container">
-  <div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
-  <div id="weapons_toggler" class="weapon_names">
-    <% weapons_by_group.each do |group, weapons| %>
-      <div class="group">
-        <div id="weapon_group_<%= group %>" class="clear clickable disabled"><span class="medium_subheader"><%= Rails.configuration.weapons["groups"][group]["name"] %></span><br />
-        <% weapons.each do |weapon_id| %>
-          <span id="weapon_toggle_<%= weapon_id %>" class="small_name"><%= Rails.configuration.weapons["weapons"][weapon_id]["name"] %></span>
+<div id="tabs">
+  <ul>
+    <li><a href="#general_tab">General Stats</a></li>
+    <li><a href="#performance_tab">Weekly Performance</a></li>
+    <li><a href="#weapons_tab">Weapons</a></li>
+    <li><a href="#maps_tab">Weekly Maps</a></li>
+  </ul>
+  <div id="general_tab">
+    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+  </div>
+  <div id="performance_tab">
+    <div class="header_medium">Weekly Performance</div>
+    <br />
+    <div class="chart_container">
+      <div id="win_loss_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+    </div>
+    <div class="chart_container">
+      <div id="weapon_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+      <div id="weapons_toggler" class="weapon_names">
+        <% weapons_by_group.each do |group, weapons| %>
+          <div class="group">
+            <div id="weapon_group_<%= group %>" class="clear clickable disabled"><span class="medium_subheader"><%= Rails.configuration.weapons["groups"][group]["name"] %></span><br />
+            <% weapons.each do |weapon_id| %>
+              <span id="weapon_toggle_<%= weapon_id %>" class="small_name"><%= Rails.configuration.weapons["weapons"][weapon_id]["name"] %></span>
+            <% end %>
+            </div>
+          </div>
         <% end %>
-        </div>
       </div>
-    <% end %>
+    </div>
+    <br class="clear" />
   </div>
 </div>
+
 <br class="clear" />
 <br class="clear" />
+
 <%= javascript_include_tag "application" %>
 <%= javascript_include_tag "amcharts/amcharts.js" %>
 <%= javascript_include_tag "amcharts/serial.js" %>
@@ -61,6 +77,18 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
-    chartController.initialize(<%= @player.id %>);
+    
+  });
+
+  $("#tabs").tabs({
+    activate: function (event, ui) {
+      if(ui.newPanel.attr('id') == "performance_tab") {
+        chartController.initialize(<%= @player.id %>);
+      }
+    }
+  });
+
+  $(function() {
+    $( "#tabs" ).tabs();
   });
 </script>
