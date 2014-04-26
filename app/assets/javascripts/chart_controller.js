@@ -12,11 +12,11 @@ var chartController = {
 
     $.get( "/players/" + this.player_id + "/stats", function(data) {
       that.chart_data = data;
-      weaponChart.initialize(p_id, data["weapons"]);
-      matchWinChart.initialize(data["general"]["wins_losses"]);
+      //weaponChart.initialize(p_id, data["weapons"]);
+      matchWinChart.initialize(data["general"]["matches"]);
     })
     .fail(function() {
-      $("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");
+      //$("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");
       $("#win_loss_chart").append("<div class='failure'>Chart failed to load.</div>");
     });
   }

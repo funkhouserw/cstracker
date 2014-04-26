@@ -10,32 +10,27 @@ var matchWinChart = {
   drawChart: function(data) {
     this.amchart = AmCharts.makeChart("win_loss_chart", {
       "type": "serial",
-      "theme": "none",
+      "theme": "dark",
       "pathToImages": "/javascripts/amcharts/images/",
       "dataProvider": this.chart_data,
       "color": "#FFFFFF",
       "valueAxes": [{
-          "stackType": "regular",
           "axisAlpha": 0.3,
           "gridAlpha": 0
       }],
       "graphs": [{
           "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
-          "fillAlphas": 0.8,
           "labelText": "[[value]]",
           "lineAlpha": 0.3,
           "title": "Wins",
-          "type": "column",
 		      "color": "#FFFFFF",
 		      "lineColor": "#0000FF",
           "valueField": "wins"
       }, {
           "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
-          "fillAlphas": 0.8,
           "labelText": "[[value]]",
           "lineAlpha": 0.3,
           "title": "Losses",
-          "type": "column",
 		      "color": "#FFFFFF",
 		      "lineColor": "#FF0000",
           "valueField": "losses"

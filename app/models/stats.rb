@@ -6,7 +6,7 @@ class Stats
   index({ player_id: 1 }, { name: "player_id_index" })
 
   def weapon(name)
-    raise "#{name} is not a weapon." if !weapons.include?(name)
+    raise "#{name} is not a weapon." if !self.class.weapons.include?(name)
     WeaponStat.new(name,
       data["total_shots_" + name] || 0,
       data["total_hits_" + name] || 0,
@@ -31,6 +31,10 @@ class Stats
 
   def headshot_percentage
     total_kills == 0 ? 0 : total_kills_headshot.to_f / total_kills.to_f
+  end
+
+  def weapons_by_kills
+    self.class.weapons.keys.map { |x| self.weapon(x) }.sort_by { |x| -x.kills }
   end
 
   def method_missing(sym, *args, &block)

@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Alef|Roboto:100|Open+Sans);
 $background-color: #222222;
-$content-padding-amount: 10px;
+$content-padding-amount: 0px;
 
 @mixin content-padding($padding-amount) {
   padding-left: $padding-amount;
