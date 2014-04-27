@@ -8,8 +8,10 @@ class PlayerPerformance
   def all_stats
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     hsh["weapons"] = all_weapon_kills
-    hsh["general"]["round"] = rounds
+    hsh["general"]["rounds"] = rounds
     hsh["general"]["matches"] = matches
+    hsh["general"]["kd"] = kd
+    hsh["general"]["accuracy"] = accuracy
     hsh
   end
 
@@ -34,6 +36,26 @@ class PlayerPerformance
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     stat_by_day("total_matches_won").each { |day, value| hsh[day]["wins"] = value }
     stat_by_day("total_matches_played").each { |day, value| hsh[day]["losses"] = value - (hsh[day]["wins"] || 0) }
+    hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
+  end
+
+  def kd
+    hsh = Hash.new {|hsh, key| hsh[key] = {} }
+    stat_by_day("total_kills").each { |day, value| hsh[day]["kills"] = value }
+    stat_by_day("total_deaths").each do |day, value|
+      hsh[day]["deaths"] = value
+      hsh[day]["kd"] = value == 0 ? 0 : hsh[day]["kills"].to_f / value.to_f
+    end
+    hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
+  end
+
+  def accuracy
+    hsh = Hash.new {|hsh, key| hsh[key] = {} }
+    stat_by_day("total_shots_hit").each { |day, value| hsh[day]["shots_hit"] = value }
+    stat_by_day("total_shots_fired").each do |day, value|
+      hsh[day]["shots_fired"] = value
+      hsh[day]["accuracy"] = value == 0 ? 0 : hsh[day]["shots_hit"].to_f / value.to_f
+    end
     hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
   end
 

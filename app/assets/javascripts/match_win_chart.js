@@ -7,6 +7,28 @@ var matchWinChart = {
     this.drawChart(this.chart_data);
   },
 
+  setStats: function(match_data, round_data) {
+    var match_wins = 0;
+    var match_losses = 0;
+    var round_wins = 0;
+    var round_losses = 0;
+
+    $.each( match_data, function( index, value ) {
+      match_wins += value.wins;
+      match_losses += value.losses;
+    });
+
+    $.each( round_data, function( index, value ) {
+      round_wins += value.wins;
+      round_losses += value.losses;
+    });
+
+    $("#match_wins").text(match_wins);
+    $("#match_losses").text(match_losses);
+    $("#round_wins").text(round_wins);
+    $("#round_losses").text(round_losses);
+  },
+
   drawChart: function(data) {
     this.amchart = AmCharts.makeChart("win_loss_chart", {
       "type": "serial",
@@ -21,11 +43,18 @@ var matchWinChart = {
       "graphs": [{
           "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
           "labelText": "[[value]]",
-          "lineAlpha": 0.3,
           "title": "Wins",
 		      "color": "#FFFFFF",
 		      "lineColor": "#0000FF",
-          "valueField": "wins"
+          "valueField": "wins",
+          "id": "wins",
+          "bullet": "round",
+          "bulletBorderAlpha": 1,
+          "bulletSize": 5,
+          "hideBulletsCount": 50,
+          "lineThickness": 4,
+          "useLineColorForBulletBorder": true
+
       }, {
           "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
           "labelText": "[[value]]",
@@ -33,7 +62,14 @@ var matchWinChart = {
           "title": "Losses",
 		      "color": "#FFFFFF",
 		      "lineColor": "#FF0000",
-          "valueField": "losses"
+          "valueField": "losses",
+          "id": "losses",
+          "bullet": "round",
+          "bulletBorderAlpha": 1,
+          "bulletSize": 5,
+          "hideBulletsCount": 50,
+          "lineThickness": 4,
+          "useLineColorForBulletBorder": true
       }],
       "categoryField": "d",
       "categoryAxis": {

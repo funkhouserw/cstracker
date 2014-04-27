@@ -14,6 +14,10 @@ var chartController = {
       that.chart_data = data;
       //weaponChart.initialize(p_id, data["weapons"]);
       matchWinChart.initialize(data["general"]["matches"]);
+      matchWinChart.setStats(data["general"]["matches"], data["general"]["rounds"])
+
+      kdChart.initialize(data["general"]["kd"]);
+      kdChart.setStats(data["general"]["kd"], data["general"]["accuracy"]);
     })
     .fail(function() {
       //$("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");

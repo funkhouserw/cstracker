@@ -1,3 +1,5 @@
+$chart_background: #292929;
+
 #weapon_chart {
   width: 700px;
   height: 300px;
@@ -8,12 +10,12 @@
   }
 }
 
-#win_loss_chart {
+.wide_chart {
   width: 700px;
-  height: 200px;
+  height: 150px;
   float: left;
+  background: $chart_background;
   &.loaded {
-    background: #3f3f4f;
     color:#ffffff;
   }
 }
@@ -33,4 +35,16 @@
     margin-left: -32px;
     margin-top: -32px;
   }
+}
+
+.chart_right {
+  width: 300px;
+  height: 150px;
+  float: left;
+  position: relative;
+}
+
+.chart_stats {
+  position: absolute;
+  bottom: 20px;
 }
