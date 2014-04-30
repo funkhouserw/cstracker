@@ -1,3 +1,13 @@
 <%= render layout: "stats_section", locals: { player: @player, title: "Maps (Top 5)" } do  %>
-	Demo
+<div id="maps_list" class="stats_table">
+    <table>
+      <% (1..5).each do |i| %>
+      <tr>
+      <td class="list_numbering"><%=i%></td>
+      <td id="map_<%=i%>" class="stat_data list_left"></td>
+      <td id="map_plays_<%=i%>" class="stat_data stat_accent list_right"></td>
+      </tr>
+      <% end %>
+    </table>
+</div>
 <% end %>

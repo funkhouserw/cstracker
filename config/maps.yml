@@ -1,0 +1,30 @@
+maps:
+  lake:
+    name: "Lake"
+  safehouse:
+    name: "Safe House"
+  sugarcane:
+    name: "Sugar Cane"
+  stmarc:
+    name: "St. Marc"
+  bank:
+    name: "Bank"
+  shorttrain:
+    name: "Short Train"
+  vertigo:
+    name: "Vertigo"
+  monastery:
+    name: "Monastery"
+  shoots:
+    name: "Shoots"
+  baggage:
+    name: "Baggage"
+modes:
+  cs:
+    name: "Classic"
+  ar:
+    name: "Arms Race"
+  de:
+    name: "Demolition"
+  dm:
+    name: "Death Match"

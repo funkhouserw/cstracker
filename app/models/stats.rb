@@ -60,4 +60,8 @@ class Stats
   def self.weapons
     Rails.configuration.weapons["weapons"]
   end
+  
+  def self.maps
+    Rails.configuration.maps
+  end
 end

@@ -14,7 +14,33 @@ class PlayerPerformance
     hsh["general"]["accuracy"] = accuracy
     hsh
   end
-
+  
+  def top_fives
+    # WEAPONS
+    weapon_hash = Hash.new
+    Stats.weapons.keys.each do |weapon_id|
+      weapon_hash[Stats.weapons[weapon_id]["name"]] = stats.last.data["total_kills_#{weapon_id}"]
+    end
+    weapon_hash = weapon_hash.sort_by {|k, v| v}
+    weapon_hash.reverse!
+    # MAPS
+    map_hash = Hash.new
+    Stats.maps["maps"].keys.each do |map_id|
+      Stats.maps["modes"].keys.each do |mode_id|
+        current_map_plays = stats.last.data["total_rounds_map_#{mode_id}_#{map_id}"]
+        if current_map_plays != nil
+          unless map_hash[Stats.maps["maps"][map_id]["name"]] != nil && current_map_plays < map_hash[Stats.maps["maps"][map_id]["name"]]
+            map_hash[Stats.maps["maps"][map_id]["name"]] = current_map_plays
+          end
+        end
+      end
+    end
+    map_hash = map_hash.sort_by {|k, v| v}
+    map_hash.reverse!
+    
+    { "weapons" => weapon_hash, "maps" => map_hash }
+  end
+  
   def all_weapon_kills
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     Stats.weapons.keys.each do |weapon_id|
@@ -22,7 +48,7 @@ class PlayerPerformance
         hsh[day][weapon_id] = value
       end
     end
-     hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
+    hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
   end
 
   def rounds

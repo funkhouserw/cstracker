@@ -1,4 +1,5 @@
 $section-header-color: #444444;
+$stats-accent-color: #CF5300;
 
 .profile_image {
   float: left;
@@ -86,6 +87,22 @@ $section-header-color: #444444;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;
   padding-left: 10px;
+}
+
+.stat_accent {
+  color: $stats-accent-color;
+}
+
+.list_numbering {
+  color: #999;
+  font-size: 20px;
+  width: 50px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.list_left {
+  width: 200px;
 }
 
 .section_header {

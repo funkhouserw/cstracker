@@ -23,5 +23,10 @@ var chartController = {
       //$("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");
       $("#win_loss_chart").append("<div class='failure'>Chart failed to load.</div>");
     });
+    
+    $.get( "/players/" + this.player_id + "/stats/top_fives", function(data) {
+      topFives.setTopWeaponStats(data["weapons"]);
+      topFives.setTopMapStats(data["maps"]);
+    });
   }
 }
