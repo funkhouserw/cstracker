@@ -59,9 +59,12 @@ class PlayerPerformance
   end
 
   def matches
+    #TODO: Do wins need to be adjusted by total_gg_matches_won?
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     stat_by_day("total_matches_won").each { |day, value| hsh[day]["wins"] = value }
     stat_by_day("total_matches_played").each { |day, value| hsh[day]["losses"] = value - (hsh[day]["wins"] || 0) }
+    stat_by_day("total_gg_matches_played").each { |day, value| hsh[day]["losses"] -= value }
+
     hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
   end
 
