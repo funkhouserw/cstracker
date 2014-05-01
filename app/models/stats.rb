@@ -13,6 +13,12 @@ class Stats
       data["total_kills_" + name] || 0)
   end
 
+  def map(name)
+    MapStat.new(name,
+      data["total_wins_map_#{name}"] || 0,
+      data["total_rounds_map_#{name}"] || 0)
+  end
+
   def kd
     total_deaths == 0 ? 1 : total_kills.to_f / total_deaths.to_f
   end
@@ -54,6 +60,12 @@ class Stats
     def shots_per_kill
       return 0 if kills == 0 || shots == 0
       shots / kills.to_f
+    end
+  end
+
+  MapStat = Struct.new(:name, :wins, :played) do
+    def losses
+      played - wins
     end
   end
 
