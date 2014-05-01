@@ -39,8 +39,8 @@ class Stats
     total_kills == 0 ? 0 : total_kills_headshot.to_f / total_kills.to_f
   end
 
-  def weapons_by_kills
-    self.class.weapons.keys.map { |x| self.weapon(x) }.sort_by { |x| -x.kills }
+  def all_weapons
+    self.class.weapons.keys.map { |x| self.weapon(x) }
   end
 
   def method_missing(sym, *args, &block)
@@ -60,6 +60,10 @@ class Stats
     def shots_per_kill
       return 0 if kills == 0 || shots == 0
       shots / kills.to_f
+    end
+
+    def as_json(options={})
+      super(options).merge!(accuracy: accuracy, ui_name: Rails.configuration.weapons["weapons"][name]["name"])
     end
   end
 

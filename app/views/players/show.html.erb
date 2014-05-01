@@ -1,4 +1,4 @@
-<%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: Rails.configuration.weapons, ids: Stats.weapons.keys } do %>
+<%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: @player.latest_stats.all_weapons, ids: Stats.weapons.keys } do %>
 <% end %>
 
 <div class="basic_stats_container">
