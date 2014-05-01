@@ -26,12 +26,10 @@ class PlayerPerformance
     # MAPS
     map_hash = Hash.new
     Stats.maps["maps"].keys.each do |map_id|
-      Stats.maps["modes"].keys.each do |mode_id|
-        current_map_plays = stats.last.data["total_rounds_map_#{mode_id}_#{map_id}"]
-        if current_map_plays != nil
-          unless map_hash[Stats.maps["maps"][map_id]["name"]] != nil && current_map_plays < map_hash[Stats.maps["maps"][map_id]["name"]]
-            map_hash[Stats.maps["maps"][map_id]["name"]] = current_map_plays
-          end
+      current_map_plays = stats.last.data["total_rounds_map_#{map_id}"]
+      if current_map_plays != nil
+        unless map_hash[Stats.maps["maps"][map_id]["name"]] != nil && current_map_plays < map_hash[Stats.maps["maps"][map_id]["name"]]
+          map_hash[Stats.maps["maps"][map_id]["name"]] = current_map_plays
         end
       end
     end

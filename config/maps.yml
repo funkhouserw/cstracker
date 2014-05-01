@@ -1,23 +1,45 @@
 maps:
-  lake:
-    name: "Lake"
-  safehouse:
-    name: "Safe House"
-  sugarcane:
-    name: "Sugar Cane"
-  stmarc:
-    name: "St. Marc"
-  bank:
+  cs_assult:
+    name: "Assault"
+  cs_italy:
+    name: "Italy"
+  cs_office:
+    name: "Office"
+  cs_militia:
+    name: "Militia"
+  de_aztec:
+    name: "Aztec"
+  de_cbbl:
+    name: "Cobblestone"
+  de_dust2:
+    name: "Dust 2"
+  de_dust:
+    name: "Dust"
+  de_inferno:
+    name: "Inferno"
+  de_nuke:
+    name: "Nuke"
+  de_train:
+    name: "Train"
+  de_bank:
     name: "Bank"
-  shorttrain:
-    name: "Short Train"
-  vertigo:
+  de_vertigo:
     name: "Vertigo"
-  monastery:
+  de_lake:
+    name: "Lake"
+  de_safehouse:
+    name: "Safe House"
+  de_sugarcane:
+    name: "Sugar Cane"
+  de_stmarc:
+    name: "St. Marc"
+  de_shorttrain:
+    name: "Short Train"
+  ar_monastery:
     name: "Monastery"
-  shoots:
+  ar_shoots:
     name: "Shoots"
-  baggage:
+  ar_baggage:
     name: "Baggage"
 modes:
   cs:
