@@ -16,13 +16,6 @@ class PlayerPerformance
   end
   
   def top_fives
-    # WEAPONS
-    weapon_hash = Hash.new
-    Stats.weapons.keys.each do |weapon_id|
-      weapon_hash[Stats.weapons[weapon_id]["name"]] = stats.last.data["total_kills_#{weapon_id}"]
-    end
-    weapon_hash = weapon_hash.sort_by {|k, v| v}
-    weapon_hash.reverse!
     # MAPS
     map_hash = Hash.new
     Stats.maps["maps"].keys.each do |map_id|
@@ -36,7 +29,7 @@ class PlayerPerformance
     map_hash = map_hash.sort_by {|k, v| v}
     map_hash.reverse!
     
-    { "weapons" => weapon_hash, "maps" => map_hash }
+    { "maps" => map_hash }
   end
   
   def all_weapon_kills
