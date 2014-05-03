@@ -3,7 +3,7 @@
     <table>
       <% (0..4).each do |i| %>
       <tr>
-      <td class="list_numbering"><%=i%></td>
+      <td class="list_numbering"><%= i + 1 %></td>
       <td id="weapon_<%=i%>" class="stat_data list_left"></td>
       <td id="weapon_kills_<%=i%>" class="stat_data stat_accent list_right"></td>
       </tr>
