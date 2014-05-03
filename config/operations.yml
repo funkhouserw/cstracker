@@ -1,0 +1,65 @@
+coins:
+  1013:
+    name: "Operation Bravo Bronze"
+    operation: bravo
+  1014:
+    name: "Operation Bravo Silver"
+    operation: bravo
+  1015:
+    name: "Operation Bravo Gold"
+    operation: bravo
+  1024:
+    name: "Operation Phoenix Bronze"
+    operation: phoenix
+  1025:
+    name: "Operation Phoenix Silver"
+    operation: phoenix
+  1026:
+    name: "Operation Phoenix Gold"
+    operation: phoenix
+operations:
+  bravo:
+    name: "Operation Bravo"
+  phoenix:
+    name: "Operation Phoenix"
+stats:
+  minutes_played:
+    name: "Minutes Played"
+    id: 69
+    value: "value"
+  match_wins:
+    name: "Match Wins"
+    id: 106
+    value: "value"
+  comp_wins:
+    name: "Competitive Wins"
+    id: 103
+    value: "value"
+  comp_kills:
+    name: "Competitive Kills"
+    id: 97
+    value: "value"
+  comp_3k:
+    name: "Competitive 3k"
+    id: 98
+    value: "value"
+  comp_4k:
+    name: "Competitive 4k"
+    id: 99
+    value: "value"
+  comp_5k:
+    name: "Competitive 5k"
+    id: 101
+    value: "value"
+  comp_hs:
+    name: "Competitive Headshot Percentage"
+    id: 102
+    value: "float_value"
+  comp_minutes_played:
+    name: "Competitive Minutes Played"
+    id: 105
+    value: "value"
+  comp_mvp:
+    name: "Competitive MVPs"
+    id: 104
+    value: "value"

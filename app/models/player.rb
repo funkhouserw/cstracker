@@ -13,6 +13,16 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def latest_inventory
+    @latest_inventory ||= begin
+      inventory = Inventory.where(:player_id => id).last
+      if inventory.nil? || inventory.fetched_at < TIME_UNTIL_FETCH.ago
+        inventory = SteamApiService.new(self).download_player_inventory
+      end
+      inventory
+    end
+  end
+
   def stats(start_time=nil, end_time=nil)
     params = {}
     params[:fetched_at.gte] = start_time if start_time

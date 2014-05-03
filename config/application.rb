@@ -11,6 +11,7 @@ module SteamStatTracker
     config.steam = YAML::load_file(File.join(__dir__, 'steam.yml'))
     config.weapons = YAML::load_file(File.join(__dir__, 'weapons.yml'))
     config.maps = YAML::load_file(File.join(__dir__, 'maps.yml'))
+    config.operations = YAML::load_file(File.join(__dir__, 'operations.yml'))
     config.autoload_paths += %W(#{config.root}/app/services)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

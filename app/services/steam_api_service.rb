@@ -12,6 +12,12 @@ class SteamApiService
     Stats.create(player_id: player.id, data: parse_stats(raw_stats))
   end
 
+  def download_player_inventory
+    uri = URI("http://api.steampowered.com/IEconItems_#{CSGO_APP_ID}/GetPlayerItems/v1/?key=#{api_key}&steamid=#{player.steam_id}")
+    raw_stats = JSON.parse(Net::HTTP.get(uri))["result"]["items"]
+    Inventory.create(player_id: player.id, items: raw_stats)
+  end
+
   private
   def api_key
     Rails.configuration.steam["api_key"]
