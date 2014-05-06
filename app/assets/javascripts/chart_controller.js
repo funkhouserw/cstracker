@@ -28,5 +28,9 @@ var chartController = {
     $.get( "/players/" + this.player_id + "/stats/top_fives", function(data) {
       topFives.setTopMapStats(data["maps"]);
     });
+
+    $.get( "/players/" + this.player_id + "/stats/operation_coins", function(data) {
+      operationStats.initialize(data);
+    });
   }
 }

@@ -1,0 +1,31 @@
+$stats-accent-color: #CF5300;
+
+.operation_content {
+	float: left;
+}
+
+.stat_header {
+  font-color: gray;
+  width: 100px;
+  text-align: right;
+  vertical-align: bottom;
+}
+
+.stat_data {
+  padding-right: 20px;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 10px;
+}
+
+.stat_accent {
+  color: $stats-accent-color;
+}
+
+.list_numbering {
+  color: #999;
+  font-size: 20px;
+  width: 50px;
+  padding-right: 20px;
+  text-align: right;
+}

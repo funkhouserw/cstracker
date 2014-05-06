@@ -8,6 +8,7 @@ SteamStatTracker::Application.routes.draw do
       collection do
         get 'weapons'
         get 'top_fives'
+        get 'operation_coins'
       end
     end
   end

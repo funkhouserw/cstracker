@@ -6,6 +6,10 @@ class StatsController < ApplicationController
   def weapons
     render json: PlayerPerformance.new(player.stats(1.month.ago, Time.now)).all_weapon_kills
   end
+
+  def operation_coins
+    render json: player.latest_inventory.operations
+  end
   
   def top_fives
     render json: PlayerPerformance.new(player.stats(1.month.ago, Time.now)).top_fives
