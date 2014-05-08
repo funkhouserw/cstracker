@@ -18,6 +18,16 @@ module ApplicationHelper
     end
   end
 
+  def match_result(_result)
+    if _result == -1
+      "LOSS"
+    elsif _result == 0
+      "TIE"
+    else
+      "WIN"
+    end
+  end
+
   def weapons_by_group
     @weapon_groups ||= begin
       result = {}

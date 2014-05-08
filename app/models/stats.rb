@@ -39,8 +39,26 @@ class Stats
     total_kills == 0 ? 0 : total_kills_headshot.to_f / total_kills.to_f
   end
 
+  def total_hours_played
+    total_time_played / 3600.0
+  end
+
   def all_weapons
     self.class.weapons.keys.map { |x| self.weapon(x) }
+  end
+
+  def latest_match_result
+    if last_match_wins.to_f / last_match_rounds.to_f < 0.5
+      -1
+    elsif last_match_wins.to_f / last_match_rounds.to_f == 0.5
+      0
+    else
+      1
+    end
+  end
+
+  def latest_match_kd
+    last_match_deaths == 0 ? 0 : last_match_kills.to_f / last_match_deaths.to_f
   end
 
   def method_missing(sym, *args, &block)

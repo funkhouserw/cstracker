@@ -2,41 +2,8 @@
 <%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: @player.latest_stats.all_weapons, ids: Stats.weapons.keys } do %>
 <% end %>
 
-<div class="basic_stats_container">
-  <div class="profile_image">
-    <img src="<%= @player.community_profile.full_avatar_url %>" />
-  </div>
-  <div class="basic_stats">
-    <div class="player_name">
-      <div class="header_large"><%= @player.community_profile.nickname %></div>
-      <div class="small_subheader <%= online_status_class(@player) %>"><%= @player.community_profile.state_message.html_safe %></div>
-    </div>
-    <div class="stats_table">
-      <table>
-        <tr>
-          <td class="stat_header">K/D</td>
-          <td class="stat_data"><%= '%.2f' % @player.latest_stats.kd %></td>
-          <td class="stat_header">MVP</td>
-          <td class="stat_data"><%= @player.latest_stats.total_mvps %></td>
-          <td class="stat_header">DPS</td>
-          <td class="stat_data"><%= '%.2f' % @player.latest_stats.damage_per_shot %></td>
-        </tr>
-        <tr>
-          <td class="stat_header">Accuracy</td>
-          <td class="stat_data"><%= '%.2f' % (@player.latest_stats.accuracy * 100) %>%</td>
-          <td class="stat_header">Headshots</td>
-          <td class="stat_data"><%= '%.2f' % (@player.latest_stats.headshot_percentage * 100) %>%</td>
-          <td class="stat_header">Wins</td>
-          <td class="stat_data"><%= '%.2f' % (@player.latest_stats.win_percentage * 100) %>%</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<br class="clear" />
-<br class="clear" />
-
+<%= render partial: "player_info", locals: { player: @player } %>
+<%= render partial: "basic_stats", locals: { player: @player } %>
 <%= render partial: "performance_stats", locals: { player: @player } %>
 <%= render partial: "weapon_stats", locals: { player: @player } %>
 <%= render partial: "map_stats", locals: { player: @player } %>

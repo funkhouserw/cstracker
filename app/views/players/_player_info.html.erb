@@ -1,0 +1,10 @@
+<div class="player_info">
+ 	<%= link_to(@player.community_profile.base_url) do %>
+    <img src="<%= @player.community_profile.full_avatar_url %>" class="profile_image" />
+  <% end %>
+  <div class="player_name">
+    <div class="header_large"><%= @player.community_profile.nickname %></div>
+    <div class="small_subheader <%= online_status_class(@player) %>"><%= @player.community_profile.state_message.html_safe %></div>
+  </div>
+  <div class="detail_right">Total Time on Record: <%= '%.2f' % (@player.latest_stats.total_hours_played) %> Hours</div>
+</div>

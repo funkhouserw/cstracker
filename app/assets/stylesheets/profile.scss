@@ -1,20 +1,29 @@
 $section-header-color: #444444;
 
-.profile_image {
-  float: left;
+.player_info {
+  width: 100%;
+  height: 110px;
 
-  img {
-    border-radius: 10px;
+  .profile_image {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+  }
+
+  .player_name {
+    float: left;
+  }
+
+  .detail_right {
+    float: right;
+    margin: 15px 10px 0px 0px;
+    color: #AAAAAA;
   }
 }
 
-.basic_stats {
-  float: left;
-  padding-left: 15px;
-}
-
-.basic_stats_container {
-  padding-top: 15px;
+.section_content {
+  width: 100%;
 }
 
 .header_large {

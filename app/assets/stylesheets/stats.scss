@@ -4,6 +4,34 @@ $stats-accent-color: #CF5300;
 	float: left;
 }
 
+.basic_stats {
+  float: left;
+  padding-left: 15px;
+  width: 585px;
+}
+
+.last_match_stats {
+  float: left;
+  width: 380px;
+  padding:10px;
+  background-color: #292929;
+
+  .title {
+    text-align: center;
+  }
+
+  .stat_title {
+    float: left;
+    text-align: left;
+    clear: left;
+  }
+
+  .stat {
+    float: right;
+    clear: right;
+  }
+}
+
 .stat_header {
   font-color: gray;
   width: 100px;
@@ -28,4 +56,9 @@ $stats-accent-color: #CF5300;
   width: 50px;
   padding-right: 20px;
   text-align: right;
+}
+
+.last_match_stats_container {
+  width:300px;
+  float: left;
 }
