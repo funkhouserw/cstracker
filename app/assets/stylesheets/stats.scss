@@ -1,4 +1,5 @@
 $stats-accent-color: #CF5300;
+$weapon-title-background: #292929;
 
 .operation_content {
 	float: left;
@@ -19,16 +20,17 @@ $stats-accent-color: #CF5300;
   .title {
     text-align: center;
   }
+}
+
+.stats_table {
+  width: 100%;
 
   .stat_title {
-    float: left;
     text-align: left;
-    clear: left;
   }
 
   .stat {
-    float: right;
-    clear: right;
+    text-align: right;
   }
 }
 
@@ -52,13 +54,22 @@ $stats-accent-color: #CF5300;
 
 .list_numbering {
   color: #999;
-  font-size: 20px;
-  width: 50px;
-  padding-right: 20px;
-  text-align: right;
+  text-align: left;
+  float: left;
 }
 
 .last_match_stats_container {
   width:300px;
   float: left;
+}
+
+.weapon_container {
+  width: 180px;
+  margin: 10px;
+  float: left;
+
+  .weapon_title {
+    width: 100%;
+    background-color: $weapon-title-background;
+  }
 }

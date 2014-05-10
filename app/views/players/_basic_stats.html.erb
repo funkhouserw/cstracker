@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td class="stat_header">Accuracy</td>
-          <td class="stat_data"><%= '%.2f' % (@player.latest_stats.accuracy * 100) %>%</td>
+          <td class="stat_data"><%= '%.2f' % (@player.latest_stats.accuracy) %>%</td>
           <td class="stat_header">Headshots</td>
           <td class="stat_data"><%= '%.2f' % (@player.latest_stats.headshot_percentage * 100) %>%</td>
           <td class="stat_header">Wins</td>
@@ -24,38 +24,40 @@
   <div class="last_match_stats">
     <div class="title">Last Match Stats</div> 
     <div class="title stat_accent"><%= match_result @player.latest_stats.latest_match_result %></div>
-    <div>
-      <div class="stat_title">Rounds Won</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_wins %> / <%= @player.latest_stats.last_match_rounds %></div>
-    </div>
-    <div>
-      <div class="stat_title">K/D Ratio</div>
-      <div class="stat stat_accent"><%= '%.2f' % (@player.latest_stats.latest_match_kd) %></div>
-    </div>
-    <div>
-      <div class="stat_title">Kills</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_kills %></div>
-    </div>
-    <div>
-      <div class="stat_title">Deaths</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_deaths %></div>
-    </div>
-    <div>
-      <div class="stat_title">Contribution</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_contribution_score %></div>
-    </div>
-    <div>
-      <div class="stat_title">MVPs</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_mvps %></div>
-    </div>
-    <div>
-      <div class="stat_title">Damage Done</div>
-      <div class="stat stat_accent"><%= @player.latest_stats.last_match_damage %></div>
-    </div>
-    <div>
-      <div class="stat_title">Money Spent</div>
-      <div class="stat stat_accent">$<%= number_with_delimiter(@player.latest_stats.last_match_money_spent, :delimiter => ',') %></div>
-    </div>
+    <table class="stats_table">
+      <tr>
+        <td class="stat_title">Rounds Won</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_wins %> / <%= @player.latest_stats.last_match_rounds %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">K/D Ratio</td>
+        <td class="stat stat_accent"><%= '%.2f' % (@player.latest_stats.latest_match_kd) %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">Kills</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_kills %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">Deaths</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_deaths %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">Contribution</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_contribution_score %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">MVPs</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_mvps %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">Damage Done</td>
+        <td class="stat stat_accent"><%= @player.latest_stats.last_match_damage %></td>
+      </tr>
+      <tr>
+        <td class="stat_title">Money Spent</td>
+        <td class="stat stat_accent">$<%= number_with_delimiter(@player.latest_stats.last_match_money_spent, :delimiter => ',') %></td>
+      </tr>
+    </table>
   </div>
   <br class="clear" />
 <% end %>

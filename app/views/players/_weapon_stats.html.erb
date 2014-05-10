@@ -1,13 +1,13 @@
 <%= render layout: "stats_section", locals: { player: @player, title: "Weapons (Top 5)" } do  %>
-<div id="weapons_list" class="stats_table">
-    <table>
-      <% (0..4).each do |i| %>
-      <tr>
-      <td class="list_numbering"><%= i + 1 %></td>
-      <td id="weapon_<%=i%>" class="stat_data list_left"></td>
-      <td id="weapon_kills_<%=i%>" class="stat_data stat_accent list_right"></td>
-      </tr>
-      <% end %>
-    </table>
+<div id="weapons_table">
+</div>
+<br class="clear" />
+<div class="weapon_container" id="weapon_stat_skeleton" style="display: none;">
+  <div class="weapon_title">
+    <div class="stat_data list_numbering number"></div>
+    <div class="stat_data name"></div>
+  </div>
+  <table class="stats_table">
+  </table>
 </div>
 <% end %>

@@ -24,7 +24,7 @@ class Stats
   end
 
   def accuracy
-    total_shots_fired == 0 ? 1 : total_shots_hit.to_f / total_shots_fired.to_f
+    (total_shots_fired == 0 ? 1 : total_shots_hit.to_f / total_shots_fired.to_f) * 100
   end
 
   def damage_per_shot
@@ -72,7 +72,7 @@ class Stats
   WeaponStat = Struct.new(:name, :shots, :hits, :kills) do
     def accuracy
       return 0 if shots == 0
-      hits / shots.to_f
+      (hits / shots.to_f) * 100
     end
 
     def shots_per_kill
@@ -81,7 +81,7 @@ class Stats
     end
 
     def as_json(options={})
-      super(options).merge!(accuracy: accuracy, ui_name: Rails.configuration.weapons["weapons"][name]["name"])
+      super(options).merge!(accuracy: accuracy, shots_per_kill: shots_per_kill, ui_name: Rails.configuration.weapons["weapons"][name]["name"])
     end
   end
 
