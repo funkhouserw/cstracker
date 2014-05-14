@@ -98,6 +98,16 @@ $section-header-color: #444444;
   padding: 3px 0px 3px 10px;
 }
 
+.collapser {
+  position: relative;
+  font-size: 40px;
+  line-height: 30px;
+  float: right;
+  top: 3px;
+  left: -20px;
+  cursor: pointer;
+}
+
 .clear {
   clear: both;
 }

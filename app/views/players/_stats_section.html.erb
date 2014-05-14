@@ -1,8 +1,25 @@
 <div class="section_header">
-	<div class="header_text">
+	<span class="header_text">
 		<%= title %>
-	</div>
+	</span>
+	<% if local_assigns[:toggle] %>
+    <% toggle_id = title.gsub(/\s+/, "").downcase + "_toggler" %>
+		<span id="<%= toggle_id %>" class="collapser">+</span>
+	<% end %>
 </div>
 <div class="section_content">
 	<%= yield %>
 </div>
+<% if local_assigns[:toggle] %>
+  <%= javascript_tag do %>
+    $( "#<%= toggle_id %>" ).click(function(event) {
+      $( "<%= toggle %>" ).toggle();
+      if($(this).hasClass("show")) {
+        $(this).text("+");
+      } else {
+        $(this).text("-");
+      }
+      $(this).toggleClass("show");
+    });
+  <% end %>
+<% end %>

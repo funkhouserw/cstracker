@@ -22,8 +22,7 @@
     </div>
   </div>
   <div class="last_match_stats">
-    <div class="title">Last Match Stats</div> 
-    <div class="title stat_accent"><%= match_result @player.latest_stats.latest_match_result %></div>
+    <div class="title">Last Match: <span class="title stat_accent bold"><%= match_result @player.latest_stats.latest_match_result %></span></div>
     <table class="stats_table">
       <tr>
         <td class="stat_title">Rounds Won</td>

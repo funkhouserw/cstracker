@@ -6,22 +6,32 @@ var topFives = {
   setTopWeaponStats: function(attribute) {
     $weapon_skeleton = $("#weapon_stat_skeleton");
     var that = this;
+    var top_weapon_dom_elements = [];
+    var weapon_dom_elements = [];
 
     var sorted_weapons = $('#weapons').data('weapons').sort(function(a, b) {
         return b[attribute] - a[attribute];
     });
 
-    for (var i=0; i < 5; i++) {
-      $weapon_element = $weapon_skeleton.clone();
+    $.each(sorted_weapons, function( index, weapon ) {
+      var $weapon_element = $weapon_skeleton.clone();
       $weapon_element.css("display", "");
-      $weapon_element.find(".number").text("" + (i + 1));
-      $weapon_element.find(".name").text(sorted_weapons[i].ui_name);
-      $weapon_element.find("table").append(that.statToTableRowString("Kills", sorted_weapons[i]["kills"]));
-      $weapon_element.find("table").append(that.statToTableRowString("Accuracy", sorted_weapons[i]["accuracy"].toFixed(2) + "%"));
-      $weapon_element.find("table").append(that.statToTableRowString("Shots Per Kill", sorted_weapons[i]["shots_per_kill"].toFixed(2)));
+      $weapon_element.find(".number").text("" + (index + 1));
+      $weapon_element.find(".stat_name").text(weapon.ui_name);
+      $weapon_element.find("table").append(that.statToTableRowString("Kills", weapon["kills"]));
+      $weapon_element.find("table").append(that.statToTableRowString("Accuracy", weapon["accuracy"].toFixed(2) + "%"));
+      $weapon_element.find("table").append(that.statToTableRowString("Shots Per Kill", weapon["shots_per_kill"].toFixed(2)));
 
-      $("#weapons_table").append($weapon_element);
-    }
+      if(index < 5) top_weapon_dom_elements.push($weapon_element);
+      else weapon_dom_elements.push($weapon_element);
+
+      if((index + 1) % 5 == 0) {
+        if(index > 0 ) weapon_dom_elements.push($("<br class='clear' />"));
+      }
+    });
+
+    $("#top_weapons_table").append(top_weapon_dom_elements);
+    $("#weapons_table").append(weapon_dom_elements);
   },
   
   setTopMapStats: function(map_hash) {
