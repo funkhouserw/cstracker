@@ -24,10 +24,8 @@ var chartController = {
       $("#win_loss_chart").append("<div class='failure'>Chart failed to load.</div>");
     });
 
-    topFives.setTopWeaponStats("kills");
-    $.get( "/players/" + this.player_id + "/stats/top_fives", function(data) {
-      topFives.setTopMapStats(data["maps"]);
-    });
+    categoryTable.setTopWeaponStats("kills");
+    categoryTable.setTopMapStats("wins");
 
     $.get( "/players/" + this.player_id + "/stats/operation_coins", function(data) {
       operationStats.initialize(data);

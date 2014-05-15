@@ -1,5 +1,5 @@
 maps:
-  cs_assult:
+  cs_assault:
     name: "Assault"
   cs_italy:
     name: "Italy"
@@ -9,7 +9,7 @@ maps:
     name: "Militia"
   de_aztec:
     name: "Aztec"
-  de_cbbl:
+  de_cbble:
     name: "Cobblestone"
   de_dust2:
     name: "Dust 2"

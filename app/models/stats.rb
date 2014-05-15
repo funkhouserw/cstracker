@@ -47,6 +47,10 @@ class Stats
     self.class.weapons.keys.map { |x| self.weapon(x) }
   end
 
+  def all_maps
+    self.class.maps.keys.map { |x| self.map(x) }
+  end
+
   def latest_match_result
     if last_match_wins.to_f / last_match_rounds.to_f < 0.5
       -1
@@ -89,6 +93,14 @@ class Stats
     def losses
       played - wins
     end
+
+    def win_percentage
+      played == 0 ? 0.0 : wins.to_f / played.to_f
+    end
+
+    def as_json(options={})
+      super(options).merge!(win_percentage: win_percentage, ui_name: Stats.maps[name]["name"])
+    end
   end
 
   def self.weapons
@@ -96,6 +108,6 @@ class Stats
   end
   
   def self.maps
-    Rails.configuration.maps
+    Rails.configuration.maps["maps"]
   end
 end

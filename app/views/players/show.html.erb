@@ -4,8 +4,8 @@
 <%= javascript_include_tag "amcharts/themes/dark.js" %>
 
 <% title "#{ @player.community_profile.nickname } | " %>
-<%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: @player.latest_stats.all_weapons, ids: Stats.weapons.keys } do %>
-<% end %>
+<%= content_tag "div", id: "weapons", class: "hidden", data: {weapons: @player.latest_stats.all_weapons, ids: Stats.weapons.keys } do; end %>
+<%= content_tag "div", id: "maps", class: "hidden", data: {maps: @player.latest_stats.all_maps } do; end %>
 
 <%= render partial: "player_info", locals: { player: @player } %>
 <%= render partial: "basic_stats", locals: { player: @player } %>

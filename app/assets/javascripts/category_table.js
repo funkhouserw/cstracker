@@ -1,4 +1,4 @@
-var topFives = {
+var categoryTable = {
 
   initialize: function () {
   },
@@ -34,13 +34,35 @@ var topFives = {
     $("#weapons_table").append(weapon_dom_elements);
   },
   
-  setTopMapStats: function(map_hash) {
-    var i = 1;
-    while (i < 6) {
-      $( '#map_' + i ).text( map_hash[i][0] )
-      $( '#map_plays_' + i ).text(map_hash[i][1] );
-      i++;
-    }
+  setTopMapStats: function(attribute) {
+    $map_skeleton = $("#map_stat_skeleton");
+    var that = this;
+    var top_map_dom_elements = [];
+    var map_dom_elements = [];
+
+    var sorted_maps = $('#maps').data('maps').sort(function(a, b) {
+      return b[attribute] - a[attribute];
+    });
+
+    $.each(sorted_maps, function( index, map ) {
+      var $map_element = $map_skeleton.clone();
+      $map_element.css("display", "");
+      $map_element.find(".number").text("" + (index + 1));
+      $map_element.find(".stat_name").text(map.ui_name);
+      $map_element.find("table").append(that.statToTableRowString("Wins", map["wins"]));
+      $map_element.find("table").append(that.statToTableRowString("Rounds Played", map["played"]));
+      $map_element.find("table").append(that.statToTableRowString("Win Percent", map["win_percentage"].toFixed(2) + "%"));
+
+      if(index < 5) top_map_dom_elements.push($map_element);
+      else map_dom_elements.push($map_element);
+
+      if((index + 1) % 5 == 0) {
+        if(index > 0 ) map_dom_elements.push($("<br class='clear' />"));
+      }
+    });
+
+    $("#top_maps_table").append(top_map_dom_elements);
+    $("#maps_table").append(map_dom_elements);
   },
 
   statToTableRowString: function(name, value) {
