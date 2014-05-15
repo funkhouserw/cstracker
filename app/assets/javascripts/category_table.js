@@ -15,6 +15,7 @@ var categoryTable = {
 
     $.each(sorted_weapons, function( index, weapon ) {
       var $weapon_element = $weapon_skeleton.clone();
+      $weapon_element.removeAttr('id');
       $weapon_element.css("display", "");
       $weapon_element.find(".number").text("" + (index + 1));
       $weapon_element.find(".stat_name").text(weapon.ui_name);
@@ -36,6 +37,7 @@ var categoryTable = {
   
   setTopMapStats: function(attribute) {
     $map_skeleton = $("#map_stat_skeleton");
+    $map_skeleton.removeAttr('id');
     var that = this;
     var top_map_dom_elements = [];
     var map_dom_elements = [];
