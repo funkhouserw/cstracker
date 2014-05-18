@@ -28,7 +28,7 @@ var kdChart = {
 
     $("#total_kills").text(kills);
     $("#total_deaths").text(deaths);
-    $("#total_kd").text(kd);
+    $("#total_kd").text(kd.toFixed(2));
     $("#total_accuracy").text(((total_hits / total_shots) * 100).toFixed(2) + "%");
   },
 
