@@ -1,3 +1,4 @@
+<% search_text = 'Steam Community URL' %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,14 @@
     <div id="header_container">
       <div class="title">CS:GO Stat Tracker</div>
       <div class="login_container">
-        <%= form_tag(search_players_path, method: "post") do %>
-          <%= text_field_tag(:profile_url) %>
-          <%= submit_tag("Go") %>
-        <% end %>
+        <div class="login_table">
+          <div class="login_field">
+            <%= form_tag(search_players_path, method: "post") do %>
+              <%= text_field_tag(:profile_url, nil, placeholder: search_text) %>
+              <%= submit_tag(" ") %>
+            <% end %>
+          </div>
+          </div>
       </div>
     </div>
     <div id="main_content_container">

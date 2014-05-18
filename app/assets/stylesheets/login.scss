@@ -1,0 +1,54 @@
+.login_container {
+  float: right;
+  display: table;
+  height: 100%;
+}
+
+.login_table {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.login_field {
+	background-color: #BFBDBD;
+	border:solid 1px #BFBDBD;
+	color: #171717;
+	height: 25px;
+	padding-left:10px;
+	width: 220px;
+	border-radius:3px;
+
+	input[type=text] {
+		width:190px;
+	}
+
+	input[type=submit] {
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+		background-image:url('/assets/search-icon.png');
+		background-size: 20px 20px;
+	}
+
+	input {
+		border: none;
+		padding: 0;
+		background: none;
+		outline: none;
+	}
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #373737;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #373737;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #373737;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #373737;
+}

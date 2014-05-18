@@ -60,7 +60,7 @@ div {
   @include content-padding($content-padding-amount);
   height: 60px;
   vertical-align: middle;
-  line-height: 60px;
+  //line-height: 60px;
 
   .title {
     font-size: 30px;
