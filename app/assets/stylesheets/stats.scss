@@ -7,7 +7,7 @@ $weapon-title-background: #292929;
 
 .basic_stats {
   float: left;
-  padding-left: 15px;
+  padding: 0 0 0 15px;
   width: 585px;
 }
 
@@ -31,6 +31,19 @@ $weapon-title-background: #292929;
 
   .stat {
     text-align: right;
+  }
+}
+
+.stats_table_large {
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+
+  .pad_right {
+    padding-right: 30px;
+  }
+
+  .stat_title {
+    font-size: 22px;
   }
 }
 

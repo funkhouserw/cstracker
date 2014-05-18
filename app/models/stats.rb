@@ -39,6 +39,10 @@ class Stats
     total_kills == 0 ? 0 : total_kills_headshot.to_f / total_kills.to_f
   end
 
+  def contribution_per_round
+    total_rounds_played == 0 ? 1 : total_contribution_score.to_f / total_rounds_played.to_f
+  end
+
   def total_hours_played
     total_time_played / 3600.0
   end
