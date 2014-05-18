@@ -82,3 +82,17 @@ $weapon-title-background: #292929;
     background-color: $weapon-title-background;
   }
 }
+
+.operation_container {
+  width: 313px;
+  margin: 10px;
+  float: left;
+
+  .operation_title {
+    width: 100%;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    background-color: $weapon-title-background;
+    padding-left: 5px;
+  }
+}

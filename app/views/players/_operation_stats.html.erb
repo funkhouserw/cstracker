@@ -1,4 +1,9 @@
-<%= render layout: "stats_section", locals: { player: @player, title: "Other" } do  %>
-	<div id="operation_stats_container" ></div>
+<%= render layout: "stats_section", locals: { player: @player, title: "Operations" } do  %>
+	<div id="operation_stats_container" >
+	</div>
 	<br class="clear" />
+  <div class="operation_container" id="operation_stat_skeleton" style="display: none;">
+    <div class="operation_title"></div>
+    <table class="stats_table"></table>
+  </div>
 <% end %>
