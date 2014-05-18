@@ -10,6 +10,7 @@ var kdChart = {
   setStats: function(kd_data, accuracy_data) {
     var kills = 0;
     var deaths = 0;
+    var kd = 0;
     var total_shots = 0;
     var total_hits = 0;
 
@@ -23,8 +24,11 @@ var kdChart = {
       total_shots += value.shots_fired;
     });
 
+    if(deaths != 0) kd = kills / deaths;
+
     $("#total_kills").text(kills);
     $("#total_deaths").text(deaths);
+    $("#total_kd").text(kd);
     $("#total_accuracy").text(((total_hits / total_shots) * 100).toFixed(2) + "%");
   },
 

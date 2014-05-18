@@ -1,45 +1,29 @@
 <%= render layout: "stats_section", locals: { player: @player, title: "Performance" } do  %>
-	<div class="chart_container left">
-		<div id="win_loss_chart" class="wide_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
-	</div>
-	<div class="chart_right">
-		<div class="stats_table chart_stats">
-	      <table>
-	        <tr>
-	          <td class="stat_header">Match Wins</td>
-	          <td class="stat_data" id="match_wins">-</td>
-	          <td class="stat_header">Losses</td>
-	          <td class="stat_data" id="match_losses">-</td>
-	        </tr>
-	        <tr>
-	          <td class="stat_header">Round Wins</td>
-	          <td class="stat_data" id="round_wins">-</td>
-	          <td class="stat_header">Losses</td>
-	          <td class="stat_data" id="round_losses">-</td>
-	        </tr>
-	      </table>
-	    </div>
-	</div>
-	<br class="clear" />
+  <div class="chart_container left">
+    <div id="win_loss_chart" class="wide_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+  </div>
+  <div class="chart_right">
+    <div class="centered_title">Wins and Losses</div>
+    <table class="stats_table">
+      <tr><td class="stat_title">Match Wins</td><td class="stat stat_accent" id="match_wins"></td></tr>
+      <tr><td class="stat_title">Match Losses</td><td class="stat stat_accent" id="match_losses"></td></tr>
+      <tr><td class="stat_title">Round Wins</td><td class="stat stat_accent" id="round_wins"></td></tr>
+      <tr><td class="stat_title">Round Losses</td><td class="stat stat_accent" id="round_losses"></td></tr>
+    </table>
+  </div>
+  <br class="clear" />
 
-	<div class="chart_container left">
-		<div id="kd_chart" class="wide_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
-	</div>
-	<div class="chart_right">
-		<div class="stats_table chart_stats">
-	      <table>
-	        <tr>
-	          <td class="stat_header">Kills</td>
-	          <td class="stat_data" id="total_kills">-</td>
-	          <td class="stat_header">Deaths</td>
-	          <td class="stat_data" id="total_deaths">-</td>
-	        </tr>
-	        <tr>
-	          <td class="stat_header" colspan="3">Accuracy</td>
-	          <td class="stat_data" id="total_accuracy">-</td>
-	        </tr>
-	      </table>
-	    </div>
-	</div>
-	<br class="clear" />
+  <div class="chart_container left">
+    <div id="kd_chart" class="wide_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
+  </div>
+  <div class="chart_right">
+    <div class="centered_title">Wins and Losses</div>
+    <table class="stats_table">
+      <tr><td class="stat_title">Kills</td><td class="stat stat_accent" id="total_kills"></td></tr>
+      <tr><td class="stat_title">Deaths</td><td class="stat stat_accent" id="total_deaths"></td></tr>
+      <tr><td class="stat_title">K/D</td><td class="stat stat_accent" id="total_kd"></td></tr>
+      <tr><td class="stat_title">Accuracy</td><td class="stat stat_accent" id="total_accuracy"></td></tr>
+    </table>
+  </div>
+  <br class="clear" />
 <% end %>
