@@ -4,7 +4,7 @@
 	</span>
 	<% if local_assigns[:toggle] %>
     <% toggle_id = title.gsub(/\s+/, "").downcase + "_toggler" %>
-		<span id="<%= toggle_id %>" class="collapser">+</span>
+		<span id="<%= toggle_id %>" class="collapser fa fa-plus-square-o fa-lg"></span>
 	<% end %>
 </div>
 <div class="section_content">
@@ -15,9 +15,11 @@
     $( "#<%= toggle_id %>" ).click(function(event) {
       $( "<%= toggle %>" ).toggle();
       if($(this).hasClass("show")) {
-        $(this).text("+");
+        $(this).removeClass("fa-minus-square-o");
+        $(this).addClass("fa-plus-square-o");
       } else {
-        $(this).text("-");
+        $(this).removeClass("fa-plus-square-o");
+        $(this).addClass("fa-minus-square-o");
       }
       $(this).toggleClass("show");
     });

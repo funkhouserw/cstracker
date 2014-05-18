@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 1.2'
 # Used for querying the Steam API
 gem 'steam-condenser'
 
+# Used for a few icons
+gem 'font-awesome-sass'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
