@@ -29,10 +29,6 @@ div {
   display: none;
 }
 
-.right {
-  float: right;
-}
-
 .clickable {
   cursor: pointer;
 }
@@ -43,14 +39,6 @@ div {
 
 .bold {
   font-weight: bold;
-}
-
-.centered {
-  margin: auto;
-}
-
-.media-image {
-  max-width: 1000px;
 }
 
 #content_container {
@@ -76,6 +64,7 @@ div {
   //line-height: 60px;
 
   .title {
+    font-size: 30px;
     float: left;
   }
 
@@ -86,30 +75,6 @@ div {
   }
 
   padding: 0 10px;
-}
-
-.padded_content {
-  padding: 10px;
-}
-
-.main_title_background {
-  height: 35px;
-  background-color: #000000;
-  opacity: 0.6;
-  position: absolute;
-  width: 1000px;
-}
-
-.main_title_container {
-  position: absolute;
-  left: 50%;
-
-  .title {
-    position: relative;
-    left: -50%;
-    font-size: 23px;
-    font-family: 'Roboto', sans-serif;
-  }
 }
 
 #footer_container {

@@ -39,12 +39,13 @@ var kdChart = {
       "pathToImages": "/javascripts/amcharts/images/",
       "dataProvider": this.chart_data,
       "color": "#FFFFFF",
-      "valueAxis": {
-        "axisAlpha": 0.3,
-        "gridAlpha": 0
-      },
+      "valueAxes": [{
+          "axisAlpha": 0.3,
+          "gridAlpha": 0
+      }],
       "graphs": [{
           "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+          "labelText": "[[value]]",
           "title": "K/D",
 		      "color": "#FFFFFF",
 		      "lineColor": "#0000FF",
@@ -57,6 +58,7 @@ var kdChart = {
           "lineThickness": 4,
           "useLineColorForBulletBorder": true,
           "numberFormatter": {precision:2, decimalSeparator:'.', thousandsSeparator:','}
+
       }],
       "categoryField": "d",
       "categoryAxis": {
@@ -69,7 +71,6 @@ var kdChart = {
           "equalSpacing": true
       }
     });
-
     $("#weapon_chart").addClass("loaded");
   }
 }

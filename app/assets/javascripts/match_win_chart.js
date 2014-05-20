@@ -36,15 +36,13 @@ var matchWinChart = {
       "pathToImages": "/javascripts/amcharts/images/",
       "dataProvider": this.chart_data,
       "color": "#FFFFFF",
-      "chartCursor": {
-        "cursorPosition":"mouse"
-      },
-      "valueAxis": {
+      "valueAxes": [{
           "axisAlpha": 0.3,
           "gridAlpha": 0
-      },
+      }],
       "graphs": [{
-          "balloonText": "<b>[[title]]</b>: [[value]]",
+          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+          "labelText": "[[value]]",
           "title": "Wins",
 		      "color": "#FFFFFF",
 		      "lineColor": "#0000FF",
@@ -58,7 +56,8 @@ var matchWinChart = {
           "useLineColorForBulletBorder": true
 
       }, {
-          "balloonText": "<b>[[title]]</b>: [[value]]",
+          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+          "labelText": "[[value]]",
           "lineAlpha": 0.3,
           "title": "Losses",
 		      "color": "#FFFFFF",
