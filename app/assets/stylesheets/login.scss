@@ -1,5 +1,4 @@
 .login_container {
-  float: right;
   display: table;
   height: 100%;
 }
@@ -28,6 +27,44 @@
 		height: 20px;
 		background-image:url('/assets/search-icon.png');
 		background-size: 20px 20px;
+	}
+
+	input {
+		border: none;
+		padding: 0;
+		background: none;
+		outline: none;
+	}
+}
+
+.login_field_main {
+	background-color: #BFBDBD;
+	border:solid 1px #BFBDBD;
+	color: #171717;
+	height: 35px;
+	padding-left:10px;
+	width: 500px;
+	border-radius:7px;
+	position: absolute;
+	top: 425px;
+	left: 250px;
+	opacity: 0.9;
+
+	input[type=text] {
+		width:450px;
+		font-size:25px;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	input[type=submit] {
+		cursor: pointer;
+		width: 30px;
+		height: 30px;
+		background-image:url('/assets/search-icon.png');
+		background-size: 30px 30px;
+		top: -5px;
+		position: relative;
+		opacity: 0.4;
 	}
 
 	input {

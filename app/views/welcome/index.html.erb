@@ -1,2 +1,18 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="clear"></div>
+<div class="main_title_background"></div>
+<div class="main_title_container">
+	<div class="title">The Global Offensive Performance Tracker</div>
+</div>
+<%= image_tag("media-image.jpg", class: "media-image") %>
+<div class="login_field_main">
+	<%= form_tag(search_players_path, method: "post") do %>
+		<%= text_field_tag(:profile_url, nil, placeholder: "Steam Community URL") %>
+		<%= submit_tag(" ") %>
+	<% end %>
+</div>
+
+
+<div class="padded_content">
+	<p>This tool tracks the performance of CS:GO players over time.  It will also provide overall lifetime statistics of the player.  To begin tracking simply paste the community profile url of the player you want to track into the search bar.</p>
+	<p>If you're having trouble viewing your stats, ensure that your steam profile is set to public.  This site is a work in progress so any feedback or suggestions would be greatly appreciated.</p>
+</div>
