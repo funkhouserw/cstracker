@@ -1,8 +1,8 @@
 class Stats
   include Mongoid::Document
   field :data, type: Hash
-  field :player_id, type: Integer
   field :fetched_at, type: DateTime, default: ->{ DateTime.now }
+  belongs_to :player, index: true
   index({ player_id: 1 }, { name: "player_id_index" })
 
   def weapon(name)

@@ -1,9 +1,8 @@
 class Inventory
   include Mongoid::Document
   field :items, type: Array
-  field :player_id, type: Integer
   field :fetched_at, type: DateTime, default: ->{ DateTime.now }
-  index({ player_id: 1 }, { name: "player_id_index" })
+  belongs_to :player, index: true
   index({ fetched_at: 1}, { expire_after_seconds: 3600 })
 
   def operations

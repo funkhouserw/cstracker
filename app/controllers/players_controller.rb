@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find_by_steam_id(params.require(:id))
+    @player = Player.find_by(steam_id: params.require(:id))
     @player ||= Player.init_from_steam_id(params.require(:id).to_i)
 
     rescue

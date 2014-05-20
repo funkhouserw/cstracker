@@ -9,13 +9,13 @@ class SteamApiService
   def download_player_stats
     uri = URI("http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=#{CSGO_APP_ID}&key=#{api_key}&steamid=#{player.steam_id}")
     raw_stats = JSON.parse(Net::HTTP.get(uri))["playerstats"]["stats"]
-    Stats.create(player_id: player.id, data: parse_stats(raw_stats))
+    player.stats.create(data: parse_stats(raw_stats))
   end
 
   def download_player_inventory
     uri = URI("http://api.steampowered.com/IEconItems_#{CSGO_APP_ID}/GetPlayerItems/v1/?key=#{api_key}&steamid=#{player.steam_id}")
     raw_stats = JSON.parse(Net::HTTP.get(uri))["result"]["items"]
-    Inventory.create(player_id: player.id, items: raw_stats)
+    player.inventories.create(items: raw_stats)
   end
 
   private
