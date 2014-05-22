@@ -1,9 +1,12 @@
-<div class="clear"></div>
-<div class="main_title_background"></div>
-<div class="main_title_container">
-	<div class="title">The Global Offensive Performance Tracker</div>
+<% if flash[:error] %>
+  <div class="flash_background"></div>
+  <div class="flash_container">
+    <div class="title">
+      <%= flash[:error] %>
+  </div>
 </div>
-<%= image_tag("media-image.jpg", class: "media-image") %>
+<% end %>
+<%= image_tag("media-image.jpg", class: "media-image", style: "display: block;") %>
 <div class="login_field_main">
 	<%= form_tag(search_players_path, method: "post") do %>
 		<%= text_field_tag(:profile_url, nil, placeholder: "Steam Community URL") %>
@@ -11,6 +14,11 @@
 	<% end %>
 </div>
 
+<div class="main_section_header">
+  <div class="header">
+    The Global Offensive Performance Tracker
+  </div>
+</div>
 
 <div class="padded_content">
 	<p>This tool tracks the performance of CS:GO players over time.  It will also provide overall lifetime statistics of the player.  To begin tracking simply paste the community profile url of the player you want to track into the search bar.</p>

@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
     redirect_to :action => :show, :id => id
 
     rescue
-    flash[:error] = "Could not find a player by that id."
+    flash[:error] = "Could not find a player by from that url."
     render "welcome/index"
   end
 
@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
     @player ||= Player.init_from_steam_id(params.require(:id).to_i)
 
     rescue
-    flash[:error] = "Could not find a player by that id."
+    flash[:error] = "Could not find a player from that id."
     render "welcome/index"
   end
 end
