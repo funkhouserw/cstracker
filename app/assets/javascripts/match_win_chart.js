@@ -30,11 +30,16 @@ var matchWinChart = {
   },
 
   drawChart: function(data) {
+    if(data.length == 0) {
+      $("#win_loss_chart").append("<div class=\"chart_text\">There is no data to display yet.<br />We'll start to collect data for this player so check back soon.</div>");
+      return;
+    }
+
     this.amchart = AmCharts.makeChart("win_loss_chart", {
       "type": "serial",
       "theme": "dark",
       "pathToImages": "/javascripts/amcharts/images/",
-      "dataProvider": this.chart_data,
+      "dataProvider": data,
       "color": "#FFFFFF",
       "chartCursor": {
         "cursorPosition":"mouse"

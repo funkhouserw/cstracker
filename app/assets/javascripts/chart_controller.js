@@ -21,7 +21,10 @@ var chartController = {
     })
     .fail(function() {
       //$("#weapon_chart").append("<div class='failure'>Chart failed to load.</div>");
-      $("#win_loss_chart").append("<div class='failure'>Chart failed to load.</div>");
+      $("#win_loss_chart").append("<div class='failure chart_text'>Chart failed to load.</div>");
+    })
+    .always(function() {
+      $(".loader").remove();
     });
 
     categoryTable.setTopWeaponStats("kills");

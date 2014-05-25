@@ -29,10 +29,17 @@ var kdChart = {
     $("#total_kills").text(kills);
     $("#total_deaths").text(deaths);
     $("#total_kd").text(kd.toFixed(2));
-    $("#total_accuracy").text(((total_hits / total_shots) * 100).toFixed(2) + "%");
+    if(total_shots == 0)
+      $("#total_accuracy").text("--");
+    else
+      $("#total_accuracy").text(((total_hits / total_shots) * 100).toFixed(2) + "%");
   },
 
   drawChart: function(data) {
+    if(data.length == 0) {
+      return;
+    }
+
     this.amchart = AmCharts.makeChart("kd_chart", {
       "type": "serial",
       "theme": "dark",
