@@ -1,5 +1,4 @@
 var matchWinChart = {
-  amchart: null,
   chart_data: null,
 
   initialize: function (w_data) {
@@ -35,59 +34,77 @@ var matchWinChart = {
       return;
     }
 
-    this.amchart = AmCharts.makeChart("win_loss_chart", {
-      "type": "serial",
-      "theme": "dark",
-      "pathToImages": "/javascripts/amcharts/images/",
-      "dataProvider": data,
-      "color": "#FFFFFF",
-      "chartCursor": {
-        "cursorPosition":"mouse"
-      },
-      "valueAxis": {
-          "axisAlpha": 0.3,
-          "gridAlpha": 0
-      },
-      "graphs": [{
-          "balloonText": "<b>[[title]]</b>: [[value]]",
-          "title": "Wins",
-		      "color": "#FFFFFF",
-		      "lineColor": "#0000FF",
-          "valueField": "wins",
-          "id": "wins",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletSize": 5,
-          "hideBulletsCount": 50,
-          "lineThickness": 4,
-          "useLineColorForBulletBorder": true
-
-      }, {
-          "balloonText": "<b>[[title]]</b>: [[value]]",
-          "lineAlpha": 0.3,
-          "title": "Losses",
-		      "color": "#FFFFFF",
-		      "lineColor": "#FF0000",
-          "valueField": "losses",
-          "id": "losses",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletSize": 5,
-          "hideBulletsCount": 50,
-          "lineThickness": 4,
-          "useLineColorForBulletBorder": true
-      }],
-      "categoryField": "d",
-      "categoryAxis": {
-          "parseDates": true,
-          "gridPosition": "start",
-          "axisAlpha": 0,
-          "gridAlpha": 0,
-          "position": "left",
-          "minPeriod": "DD",
-          "equalSpacing": true
-      }
+    $(function () {
+      $('#win_loss_chart').highcharts({
+        chart: {
+          type: 'column',
+          backgroundColor:'transparent'
+        },
+        title: {
+          text: ''
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: {
+          type: 'datetime',
+          labels: {
+            style: {
+              color: "#FFFFFF"
+            }
+          }
+        },
+        yAxis: {
+          min: 0,
+          maxPadding: 0,
+          gridLineColor: '#555',
+          title: {
+            enabled: false
+          },
+          stackLabels: {
+            enabled: false
+          },
+          labels: {
+            enabled: true,
+            style: {
+              color: "#AAA"
+            }
+          }
+        },
+        tooltip: {
+          formatter: function() {
+            return '<b>'+ (this.x.getMonth() + 1) + '-' + this.x.getDate() + '-' +  this.x.getFullYear() +'</b><br/>'+
+            this.series.name +': '+ this.y;
+          }
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+              dataLabels: {
+                enabled: false,
+                color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                style: {
+                  textShadow: '0 0 3px black, 0 0 3px black'
+                }
+            }
+          }
+        },
+        series: [{
+          name: 'Wins',
+          color: '#4756FF',
+          data: $.map( data, function ( elementOfArray, indexInArray ) {
+            return { x: new Date(elementOfArray["d"]), y: elementOfArray["wins"]};
+          })
+        }, {
+          name: 'Losses',
+          color: '#AF0000',
+          data: $.map( data, function ( elementOfArray, indexInArray ) {
+            return { x: new Date(elementOfArray["d"]), y: elementOfArray["losses"]};
+          })
+        }]
+      });
     });
+
     $("#weapon_chart").addClass("loaded");
   }
 }

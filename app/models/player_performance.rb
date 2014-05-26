@@ -15,23 +15,6 @@ class PlayerPerformance
     hsh
   end
   
-  def top_fives
-    # MAPS
-    map_hash = Hash.new
-    Stats.maps["maps"].keys.each do |map_id|
-      current_map_plays = stats.last.data["total_rounds_map_#{map_id}"]
-      if current_map_plays != nil
-        unless map_hash[Stats.maps["maps"][map_id]["name"]] != nil && current_map_plays < map_hash[Stats.maps["maps"][map_id]["name"]]
-          map_hash[Stats.maps["maps"][map_id]["name"]] = current_map_plays
-        end
-      end
-    end
-    map_hash = map_hash.sort_by {|k, v| v}
-    map_hash.reverse!
-    
-    { "maps" => map_hash }
-  end
-  
   def all_weapon_kills
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     Stats.weapons.keys.each do |weapon_id|

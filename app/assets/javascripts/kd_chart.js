@@ -1,5 +1,4 @@
 var kdChart = {
-  amchart: null,
   chart_data: null,
 
   initialize: function (w_data) {
@@ -40,42 +39,51 @@ var kdChart = {
       return;
     }
 
-    this.amchart = AmCharts.makeChart("kd_chart", {
-      "type": "serial",
-      "theme": "dark",
-      "pathToImages": "/javascripts/amcharts/images/",
-      "dataProvider": this.chart_data,
-      "color": "#FFFFFF",
-      "valueAxis": {
-        "axisAlpha": 0.3,
-        "gridAlpha": 0
+    $('#kd_chart').highcharts({
+      chart: {
+        backgroundColor:'transparent'
       },
-      "graphs": [{
-          "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
-          "title": "K/D",
-		      "color": "#FFFFFF",
-		      "lineColor": "#0000FF",
-          "valueField": "kd",
-          "id": "kd",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletSize": 5,
-          "hideBulletsCount": 50,
-          "lineThickness": 4,
-          "useLineColorForBulletBorder": true,
-          "numberFormatter": {precision:2, decimalSeparator:'.', thousandsSeparator:','}
-      }],
-      "categoryField": "d",
-      "categoryAxis": {
-          "parseDates": true,
-          "gridPosition": "start",
-          "axisAlpha": 0,
-          "gridAlpha": 0,
-          "position": "left",
-          "minPeriod": "DD",
-          "equalSpacing": true
-      }
-    });
+      title: {
+        text: ''
+      },
+      xAxis: {
+        type: 'datetime',
+        labels: {
+          style: {
+            color: "#FFFFFF"
+          }
+        }
+      },
+      yAxis: {
+        min: 0,
+        maxPadding: 0,
+        gridLineColor: '#555',
+        title: {
+          enabled: false
+        },
+        labels: {
+          enabled: true,
+          style: {
+            color: "#AAA"
+          }
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return '<b>'+ (this.x.getMonth() + 1) + '-' + this.x.getDate() + '-' +  this.x.getFullYear() +'</b><br/>'+
+          this.series.name +': '+ this.y.toFixed(2);
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      series: [{
+        name: 'KD',
+        color: "#cf5300",
+        data: $.map( data, function ( elementOfArray, indexInArray ) {
+          return { x: new Date(elementOfArray["d"]), y: elementOfArray["kd"]}
+      })}]
+  });
 
     $("#weapon_chart").addClass("loaded");
   }
