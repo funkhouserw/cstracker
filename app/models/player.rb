@@ -1,10 +1,11 @@
 class Player
   include Mongoid::Document
   field :steam_id, type: String
-  field :synchronized_at, type: DateTime
+  field :last_viewed, type: DateTime
   has_many :stats
   has_many :inventories
   index({ steam_id: 1 }, { name: "steam_id_index" })
+  index({ last_viewed: 1})
 
   TIME_UNTIL_FETCH = 1.hour
   before_validation :validate_steam_id, :on => :create

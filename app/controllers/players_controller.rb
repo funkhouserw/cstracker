@@ -12,6 +12,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find_by(steam_id: params.require(:id))
     @player ||= Player.init_from_steam_id(params.require(:id).to_i)
+    @player.update_attributes(last_viewed: Time.now)
 
     rescue
     flash[:error] = "Could not find a player from that id."
