@@ -76,7 +76,7 @@ class PlayerPerformance
 
     results = Hash.new(0)
     stats.each_with_index do |stat, index|
-      if index > 1
+      if index > 0
         point = stat.send(_stat.to_sym)
         total = point - stats[index - 1].send(_stat.to_sym)
         date = Time.at(stat.fetched_at.to_i - ((stat.fetched_at.to_i - stats[index - 1].fetched_at.to_i) / 2)).to_date
@@ -91,7 +91,7 @@ class PlayerPerformance
 
     results = hsh = Hash.new {|hsh, key| hsh[key] = Hash.new(0) }
     stats.each_with_index do |stat, index|
-      if index > 1
+      if index > 0
         attributes.each do |attribute|
           point = stat.send(attribute.to_sym)
           total = point - stats[index - 1].send(attribute.to_sym)
