@@ -1,4 +1,4 @@
-<%= render layout: "stats_section", locals: { player: @player, title: "Performance" } do  %>
+<%= render layout: "stats_section", locals: { player: @player, title: "Performance", dom_id: "performance_header" } do  %>
   <div class="chart_container left">
     <div id="win_loss_chart" class="wide_chart"><div class="loader medium"><%= image_tag "yellow_loader_64.GIF" %></div></div>
   </div>

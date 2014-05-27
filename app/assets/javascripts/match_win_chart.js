@@ -26,6 +26,13 @@ var matchWinChart = {
     $("#match_losses").text(match_losses);
     $("#round_wins").text(round_wins);
     $("#round_losses").text(round_losses);
+
+    if(match_data.length > 0)
+      this.setPerformanceDateHeader(new Date(match_data[0]["d"]));
+  },
+
+  setPerformanceDateHeader: function(date) {
+    $("#performance_header").append("<span class=\"section_subheader\">Since " + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + "</span>");
   },
 
   drawChart: function(data) {

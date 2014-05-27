@@ -1,4 +1,4 @@
-<div class="section_header">
+<div class="section_header" <%= local_assigns[:dom_id].nil? ? "" : "id=#{local_assigns[:dom_id]}" %>>
 	<span class="header_text">
 		<%= title %>
 	</span>
