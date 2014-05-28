@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
     redirect_to :action => :show, :id => id
 
     rescue
-    flash[:error] = "Could not find a player by from that url."
+    flash[:error] = "Could not find a player from that url."
     render "welcome/index"
   end
 
