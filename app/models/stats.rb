@@ -99,7 +99,7 @@ class Stats
     end
 
     def win_percentage
-      played == 0 ? 0.0 : wins.to_f / played.to_f
+      played == 0 ? 0.0 : (wins.to_f / played.to_f) * 100
     end
 
     def as_json(options={})
