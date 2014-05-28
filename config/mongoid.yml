@@ -3,10 +3,10 @@ production:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
       database: steam_stat_tracker
-      skip_version_check: true
-      safe: true
-  options:
-    raise_not_found_error: false
+      options:
+        skip_version_check: true
+        safe: true
+        raise_not_found_error: false
 development:
   # Configure available database sessions. (required)
   sessions:
