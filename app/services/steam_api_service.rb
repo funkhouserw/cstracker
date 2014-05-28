@@ -20,7 +20,7 @@ class SteamApiService
 
   private
   def api_key
-    Rails.configuration.steam["api_key"]
+    ENV['API_KEY'] || Rails.configuration.steam["api_key"]
   end
 
   def parse_stats(data_hash)

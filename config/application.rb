@@ -11,7 +11,10 @@ Bundler.require(:default, Rails.env)
 
 module SteamStatTracker
   class Application < Rails::Application
-    config.steam = YAML::load_file(File.join(__dir__, 'steam.yml'))
+    if File.exists?(File.join(__dir__, 'steam.yml'))
+      config.steam = YAML::load_file(File.join(__dir__, 'steam.yml'))
+    end
+
     config.weapons = YAML::load_file(File.join(__dir__, 'weapons.yml'))
     config.maps = YAML::load_file(File.join(__dir__, 'maps.yml'))
     config.operations = YAML::load_file(File.join(__dir__, 'operations.yml'))
