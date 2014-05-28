@@ -2,7 +2,6 @@ production:
   sessions:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
-      database: steam_stat_tracker
       options:
         skip_version_check: true
         safe: true
