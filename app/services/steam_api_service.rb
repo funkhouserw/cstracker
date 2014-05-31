@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SteamApiService
   attr_reader :player
   CSGO_APP_ID = 730
