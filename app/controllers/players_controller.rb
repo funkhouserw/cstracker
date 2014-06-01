@@ -13,9 +13,13 @@ class PlayersController < ApplicationController
     @player = Player.find_by(steam_id: params.require(:id))
     @player ||= Player.init_from_steam_id(params.require(:id).to_i)
     @player.update_attributes(last_viewed: Time.now)
+    @player.latest_stats
 
+    rescue NoStatsAvailableError
+      flash[:error] = "There are no stats available for this user."
+      render "welcome/index"
     rescue
-    flash[:error] = "Could not find a player from that id."
-    render "welcome/index"
+      flash[:error] = "Could not find a player from that id."
+      render "welcome/index"
   end
 end
