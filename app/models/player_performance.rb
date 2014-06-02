@@ -52,6 +52,7 @@ class PlayerPerformance
   def kd
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     stats_by_day("total_kills", "total_deaths").each do |day, values|
+      next if values["total_kills"] == 0 && values["total_deaths"] == 0
       hsh[day]["kills"] = values["total_kills"]
       hsh[day]["deaths"] = values["total_deaths"]
       hsh[day]["kd"] = values["total_deaths"] == 0 ? 0 : values["total_kills"].to_f / values["total_deaths"].to_f
