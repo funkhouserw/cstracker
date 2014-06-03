@@ -5,6 +5,8 @@ class Stats
   belongs_to :player, index: true
   index({ player_id: 1 }, { name: "player_id_index" })
 
+  KNOWN_STATS = [:total_rescued_hostages]
+
   def weapon(name)
     raise "#{name} is not a weapon." if !self.class.weapons.include?(name)
     WeaponStat.new(name,
@@ -70,11 +72,18 @@ class Stats
   end
 
   def method_missing(sym, *args, &block)
-    data[sym.to_s] || super(sym, *args, &block)
+    dt = data[sym.to_s]
+    if dt.nil?
+      return 0 if KNOWN_STATS.include?(sym)
+      return super(sym, *args, &block)
+    end
+    dt
   end
 
   def respond_to?(sym, include_private = false)
-    data.try(:[], sym.to_s) != nil || super(sym, include_private)
+    return true if data.try(:[], sym.to_s) != nil 
+    return true if KNOWN_STATS.include?(sym)
+    return super(sym, include_private)
   end
 
   WeaponStat = Struct.new(:name, :shots, :hits, :kills) do
