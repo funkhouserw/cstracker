@@ -5,7 +5,7 @@ class Stats
   belongs_to :player, index: true
   index({ player_id: 1 }, { name: "player_id_index" })
 
-  KNOWN_STATS = [:total_rescued_hostages]
+  KNOWN_STATS = [:total_rescued_hostages, :total_gg_matches_won, :total_gg_matches_played]
 
   def weapon(name)
     raise "#{name} is not a weapon." if !self.class.weapons.include?(name)
