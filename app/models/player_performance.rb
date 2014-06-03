@@ -7,7 +7,6 @@ class PlayerPerformance
 
   def all_stats
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
-    hsh["weapons"] = all_weapon_kills
     hsh["general"]["rounds"] = rounds
     hsh["general"]["matches"] = matches
     hsh["general"]["kd"] = kd
