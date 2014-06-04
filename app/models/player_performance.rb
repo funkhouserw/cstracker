@@ -27,6 +27,7 @@ class PlayerPerformance
   def rounds
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     stats_by_day("total_classic_rounds_won", "total_classic_rounds_loss").each do |day, values|
+      next if values["total_classic_rounds_won"].abs + values["total_classic_rounds_loss"].abs == 0
       hsh[day]["wins"] = values["total_classic_rounds_won"]
       hsh[day]["losses"] = values["total_classic_rounds_loss"]
     end
@@ -38,6 +39,7 @@ class PlayerPerformance
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
     stats_by_day( "total_classic_matches_won",
                   "total_classic_matches_loss").each do |day, values|
+      next if values["total_classic_matches_won"].abs + values["total_classic_matches_loss"] == 0
       hsh[day]["wins"] = values["total_classic_matches_won"]
       hsh[day]["losses"] = values["total_classic_matches_loss"]
     end
