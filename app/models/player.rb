@@ -46,9 +46,16 @@ class Player
 
   def self.init_from_url(url)
     # Probably a waaayy better way to do this, but it'll do for now
+    # First, try to grab the 64id
     steam_id = /\/profiles\/(.*?)\//.match(url + "/").try(:[], 1)
     steam_id = steam_id.to_i if steam_id
+
+    # Otherwise try to grab the vanity name
     steam_id ||= /\/id\/(.*?)\//.match(url + "/").try(:[], 1)
+
+    # Finally, assume they entered just the vanity name
+    steam_id ||= url
+
     init_from_steam_id(steam_id)
   end
 

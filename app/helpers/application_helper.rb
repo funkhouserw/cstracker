@@ -3,6 +3,8 @@ module ApplicationHelper
     steam_id = /\/profiles\/(.*?)\//.match(url + "/").try(:[], 1)
     if steam_id
       steam_id.to_i
+    elsif url.is_i?
+      url.to_i
     else
       nil
     end

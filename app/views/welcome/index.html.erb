@@ -9,7 +9,7 @@
 <%= image_tag("media-image.jpg", class: "media-image", style: "display: block;") %>
 <div class="login_field_main">
 	<%= form_tag(search_players_path, method: "post") do %>
-		<%= text_field_tag(:profile_url, nil, placeholder: "Steam Community URL") %>
+		<%= text_field_tag(:profile_url, nil, placeholder: "Profile URL, Steam Name or ID") %>
 		<%= submit_tag(" ") %>
 	<% end %>
 </div>
