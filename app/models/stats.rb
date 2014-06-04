@@ -49,6 +49,22 @@ class Stats
     total_time_played / 3600.0
   end
 
+  def total_classic_matches_won
+    total_matches_won - total_gg_matches_won
+  end
+
+  def total_classic_matches_loss
+    (total_matches_played - total_matches_won) - (total_gg_matches_played - total_gg_matches_won)
+  end
+
+  def total_classic_rounds_won
+    total_wins - total_gun_game_rounds_won
+  end
+
+  def total_classic_rounds_loss
+    (total_rounds_played - total_wins) - (total_gun_game_rounds_played - total_gun_game_rounds_won)
+  end
+
   def all_weapons
     self.class.weapons.keys.map { |x| self.weapon(x) }
   end

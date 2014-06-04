@@ -26,9 +26,9 @@ class PlayerPerformance
 
   def rounds
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
-    stats_by_day("total_wins", "total_rounds_played").each do |day, values|
-      hsh[day]["wins"] = values["total_wins"]
-      hsh[day]["losses"] = values["total_rounds_played"] - hsh[day]["wins"]
+    stats_by_day("total_classic_rounds_won", "total_classic_rounds_loss").each do |day, values|
+      hsh[day]["wins"] = values["total_classic_rounds_won"]
+      hsh[day]["losses"] = values["total_classic_rounds_loss"]
     end
 
     hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
@@ -36,13 +36,10 @@ class PlayerPerformance
 
   def matches
     hsh = Hash.new {|hsh, key| hsh[key] = {} }
-    stats_by_day( "total_matches_won",
-                  "total_matches_played",
-                  "total_gg_matches_played",
-                  "total_gg_matches_won").each do |day, values|
-      hsh[day]["wins"] = values["total_matches_won"] - values["total_gg_matches_won"]
-      hsh[day]["losses"] = values["total_matches_played"] - values["total_gg_matches_played"]
-      hsh[day]["losses"] -= hsh[day]["wins"]
+    stats_by_day( "total_classic_matches_won",
+                  "total_classic_matches_loss").each do |day, values|
+      hsh[day]["wins"] = values["total_classic_matches_won"]
+      hsh[day]["losses"] = values["total_classic_matches_loss"]
     end
 
     hsh.each_with_object([]) { |(k, v), array| array << v.merge("d" => k) }
