@@ -56,15 +56,19 @@ weapons:
   xm1014:
     name: "XM1014"
     group: heavy
+    pellets: 6
   nova:
     name: "NOVA"
     group: heavy
+    pellets: 9
   sawedoff:
     name: "SAWED-OFF"
     group: heavy
+    pellets: 9
   mag7:
     name: "MAG-7"
     group: heavy
+    pellets: 9
   glock:
     name: "GLOCK"
     group: pistol

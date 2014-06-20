@@ -110,7 +110,11 @@ class Stats
 
     def shots_per_kill
       return 0 if kills == 0 || shots == 0
-      shots / kills.to_f
+      (shots.to_f / pellets) / kills.to_f
+    end
+
+    def pellets
+      Rails.configuration.weapons["weapons"][name]["pellets"] || 1
     end
 
     def as_json(options={})
