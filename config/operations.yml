@@ -17,11 +17,22 @@ coins:
   1026:
     name: "Operation Phoenix Gold"
     operation: phoenix
+  1028:
+    name: "Operation Breakout Bronze"
+    operation: breakout
+  1029:
+    name: "Operation Breakout Silver"
+    operation: breakout
+  1030:
+    name: "Operation Breakout Gold"
+    operation: breakout
 operations:
   bravo:
     name: "Operation Bravo"
   phoenix:
     name: "Operation Phoenix"
+  breakout:
+    name: "Operation Breakout"
 stats:
   minutes_played:
     name: "Minutes Played"
@@ -31,6 +42,9 @@ stats:
     name: "Match Wins"
     id: 106
     value: "value"
+  operation_wins:
+    name: "Operation Wins"
+    id: 179
   comp_wins:
     name: "Competitive Wins"
     id: 103

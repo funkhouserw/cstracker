@@ -23,7 +23,7 @@ class Inventory
     def method_missing(sym, *args, &block)
       stat_info = Rails.configuration.operations["stats"][sym.to_s]
       if stat_info
-        attributes.detect { |x| x["defindex"] == stat_info["id"] }[stat_info["value"]]
+        attributes.detect { |x| x["defindex"] == stat_info["id"] }.try(:[], stat_info["value"])
       else
         super(sym, *args, &block)
       end
