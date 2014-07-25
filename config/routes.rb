@@ -12,5 +12,6 @@ SteamStatTracker::Application.routes.draw do
     end
   end
 
+  match 'faq', to: "welcome#faq", :via => [:get], :as => "faq"
   root to: "welcome#index"
 end
