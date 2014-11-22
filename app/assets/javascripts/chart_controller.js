@@ -32,6 +32,8 @@ var chartController = {
 
     $.get( "/players/" + this.player_id + "/stats/operation_coins", function(data) {
       operationStats.initialize(data);
+    }).fail(function() {
+      operationStats.failed();
     });
   }
 }

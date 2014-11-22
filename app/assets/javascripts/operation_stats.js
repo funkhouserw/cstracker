@@ -5,7 +5,7 @@ var operationStats = {
     this.operation_data = data;
     this.addOperationData(data);
   },
-  
+
   addOperationData: function(_data) {
     $operation_skeleton = $("#operation_stat_skeleton");
     var operation_dom_elements = [];
@@ -36,5 +36,9 @@ var operationStats = {
 
   statToTableRowString: function(name, value) {
     return "<tr><td class=\"stat_title\">" + name + "</td><td class=\"stat stat_accent\">" + value + "</td></tr>";
+  },
+
+  failed: function() {
+    $("#operation_stats_container").append("<div class='api_error'>Inventory is set to private or there was a Steam API error.</div>");
   }
 }
