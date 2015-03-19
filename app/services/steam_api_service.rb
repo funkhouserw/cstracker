@@ -1,6 +1,9 @@
 require 'net/http'
 
 class SteamApiService
+  class NoStatsAvailableError < StandardError
+  end
+
   attr_reader :player
   CSGO_APP_ID = 730
 
@@ -29,7 +32,4 @@ class SteamApiService
   def parse_stats(data_hash)
     data_hash.each_with_object({}) { |stat, hsh| hsh[stat["name"]] = stat["value"] }
   end
-end
-
-class NoStatsAvailableError < StandardError
 end

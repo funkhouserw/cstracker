@@ -4,7 +4,10 @@ class PlayersController < ApplicationController
     id ||= Player.init_from_url(params.require(:profile_url)).steam_id
     redirect_to :action => :show, :id => id
 
-    rescue
+  rescue SteamCondenserError
+    flash[:error] = "The steam community api is currently down."
+    render "welcome/index"
+  rescue
     flash[:error] = "Could not find a player from that url."
     render "welcome/index"
   end
@@ -15,11 +18,14 @@ class PlayersController < ApplicationController
     @player.update_attributes(last_viewed: Time.now)
     @player.latest_stats
 
-    rescue NoStatsAvailableError
-      flash[:error] = "There are no stats available for this user."
-      render "welcome/index"
-    rescue
-      flash[:error] = "Could not find a player from that id."
-      render "welcome/index"
+  rescue SteamApiService::NoStatsAvailableError
+    flash[:error] = "There are no stats available for this user."
+    render "welcome/index"
+  rescue SteamCondenserError
+    flash[:error] = "The steam community api is currently down."
+    render "welcome/index"
+  rescue
+    flash[:error] = "Could not find a player from that id."
+    render "welcome/index"
   end
 end
