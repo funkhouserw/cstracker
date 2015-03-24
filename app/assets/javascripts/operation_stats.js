@@ -21,7 +21,7 @@ var operationStats = {
       $operation_element.find("table").append(that.statToTableRowString("3k Rounds", operation["comp_3k"]));
       $operation_element.find("table").append(that.statToTableRowString("4k Rounds", operation["comp_4k"]));
       $operation_element.find("table").append(that.statToTableRowString("5k Rounds", operation["comp_5k"]));
-      $operation_element.find("table").append(that.statToTableRowString("Headshot Percentage", operation["comp_hs"].toFixed(2) + "%"));
+      $operation_element.find("table").append(that.statToTableRowString("Headshot Percentage", operation["comp_hs"] == null ? "n/a" : (operation["comp_hs"].toFixed(2) + "%")));
       $operation_element.find("table").append(that.statToTableRowString("Competitive MVPs", operation["comp_mvp"]));
 
       operation_dom_elements.push($operation_element);
