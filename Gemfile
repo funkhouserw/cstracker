@@ -5,7 +5,7 @@ ruby "2.1.2"
 gem 'rails', '4.1.0'
 
 # Use mongoid for putting objects into mongo
-gem "mongoid", "~> 4.0.0.beta1"
+gem "mongoid", "~> 4.0.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
