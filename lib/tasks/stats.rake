@@ -7,3 +7,8 @@ task :sync_stats => :environment do
     end
   end
 end
+
+desc "Clean out old stats"
+task :remove_stale_stats => :environment do
+  Stats.where(:fetched_at.lt => 2.month.ago).delete_all
+end

@@ -13,7 +13,7 @@ class Player
 
   def latest_stats
     @latest_stats ||= begin
-      stats = Stats.where(:player_id => id).last
+      stats = Stats.where(:player_id => id).sort(fetched_at: -1).last
       if stats.nil? || stats.fetched_at < TIME_UNTIL_FETCH.ago
         stats = SteamApiService.new(self).download_player_stats
       end

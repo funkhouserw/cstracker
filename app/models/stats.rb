@@ -3,7 +3,7 @@ class Stats
   field :data, type: Hash
   field :fetched_at, type: DateTime, default: ->{ DateTime.now }
   belongs_to :player, index: true
-  index({ player_id: 1, _id: 1 }, { name: "player_id_index" })
+  index({ player_id: 1, fetched_at: 1 }, { name: "player_id_index" })
 
   KNOWN_STATS = [:total_rescued_hostages, :total_gg_matches_won, :total_gg_matches_played, :total_broken_windows]
 
